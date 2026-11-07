@@ -1,0 +1,129 @@
+\begin{enumerate}[label=\thesubsection.\arabic*, ref=\thesubsection.\theenumi]
+	\item Common differential and Integral Equations
+	\begin{align}
+		\frac{d}{dx}(\sin x) &= \cos x \label{eq:sindif}\\
+		\frac{d}{dx}(\cos x) &= -\sin x \label{eq:cosdif} \\
+		\frac{d}{dx}(\tan x) &= \sec^2 x \label{eq:tandiff}\\
+	\end{align}
+	Inverse Function:
+	\begin{align}
+		\cos^{-1}\brak{\cos\brak{x}} = \begin{cases}
+			x - 2k\pi, & \text{for } 2k\pi \le x \le \brak{2k+1}\pi \\[6pt]
+			2\brak{k+1}\pi - x, & \text{for } \brak{2k+1}\pi \le x \le 2\brak{k+1}\pi
+		\end{cases} \quad \text{where } k \in \mathbb{Z} \label{eq:inverse}
+		\end{align}
+		Cross Product:
+			\begin{align}
+				\vec{w} \times \vec{v} = \myvec{w_2 v_3 - w_3 v_2 \\ w_3 v_1 - w_1 v_3 \\ w_1 v_2 - w_2 v_1}\label{eq:cross}
+			\end{align} 
+			Direction Cosines:\\
+			Unit direction vector of the line be $\vec{u} = \myvec{l \\ m \\ n}$, where $l, m, n$ are its direction cosines,where
+			\begin{align}
+				l = \vec{u}^{\top} \vec{e}_1 = \cos\alpha, \quad m = \vec{u}^{\top} \vec{e}_2 = \cos\beta, \quad n = \vec{u}^{\top} \vec{e}_3 = \cos\gamma \label{eq:cross1}
+			\end{align}
+			Trignometric equations
+			\begin{align}
+				\sin\brak{A - B} = \sin A \cos B - \cos A \sin B \label{sinsub}
+				\end{align}
+				Implicit Function Theorem(ITF)			
+				\begin{align}
+					y = g\brak{x}  
+					\end{align}
+					\begin{align}
+					F\brak{x, g\brak{x}} = 0.  \label{ITF1}
+						\end{align}
+						Such that
+						\begin{align}
+						\frac{dy}{dx} = -\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}} \label{ITF2}
+						\end{align}
+	Standard Laplace Transform of a Trignotric Functions:
+	\begin{align}
+		\brak{\sin\brak{\omega t}} \system{L} \frac{\omega}{s^2 + \omega^2}
+		\label{laplace_sin} \\
+	\cbrak{\cos\brak{\omega t}}\system{L}\frac{s}{s^2 + \omega^2}
+	\end{align}
+	
+	Frequency-Domain Differentiation Property:
+	\begin{align}
+		\brak{t \cdot f\brak{t}} \system{L}  -\frac{d}{ds} F\brak{s}, \quad \text{where } F\brak{s} = \mathcal{L}\brak{f\brak{t}}
+		\label{laplace_freq_diff}		
+	\end{align}
+	Integration Property in $s$-Domain:
+	\begin{align}
+		\brak{\int_0^t g\brak{\tau} \, d\tau} \system{L}  \frac{G\brak{s}}{s}, \quad \text{where } G\brak{s} = \mathcal{L}\brak{g\brak{t}}
+		\label{laplace_integration}
+	\end{align}
+Inverse Laplace Transform Pair:
+	\begin{align}
+		\mathcal{L}^{-1}\brak{\frac{2\omega^3}{\brak{s^2 + \omega^2}^2}} = \sin\brak{\omega t} - \omega t \cos\brak{\omega t}
+		\label{laplace_inv_pair}
+	\end{align}
+	Trignometric Properties
+\begin{align}
+	1 + \sin x &= \cos^2\brak{\frac{x}{2}} + \sin^2\brak{\frac{x}{2}} + 2\sin\brak{\frac{x}{2}}\cos\brak{\frac{x}{2}}
+	\\
+	&= \brak{\cos\frac{x}{2} + \sin\frac{x}{2}}^2
+	\label{eq:EE26BTECH11202-plus_sin_decomp}
+\end{align}
+\begin{align}
+	1 - \sin x &= \cos^2\brak{\frac{x}{2}} + \sin^2\brak{\frac{x}{2}} - 2\sin\brak{\frac{x}{2}}\cos\brak{\frac{x}{2}}
+	\\
+	&= \brak{\cos\frac{x}{2} - \sin\frac{x}{2}}^2
+	\label{eq:EE26BTECH11202-minus_sin_decomp}
+\end{align}
+\begin{align}
+	2\tan^{-1}\theta = \tan^{-1}\brak{\frac{2\theta}{1 - \theta^2}}, \quad \text{for } |\theta| < 1
+	\label{eq:EE26BTECH11202-double_angle_identity}
+\end{align}
+\begin{align}
+   1 - \cos^2 x = \sin^2 x \label{eq:pythogorus}
+	\end{align}
+	The probability of obtaining $k$ correct answers out of $n$ independent questions:\brak{PMF}
+	 \begin{align}
+		P\brak{X = k} = \binom{n}{k} p^k q^{n - k} = \binom{5}{k} \brak{\frac{1}{3}}^k \brak{\frac{2}{3}}^{5 - k}
+		\label{eq:EE26BTECH11202-pmf}
+	\end{align}
+	The shortest distance $d$ between the two skew lines is the scalar projection of $\vec{a}_2 - \vec{a}_1$ onto $\vec{n}$:
+	\begin{align}
+		d = \frac{\mydet{\brak{\vec{a}_2 - \vec{a}_1}^T \vec{n}}}{\norm{\vec{n}}} \label{shortest_distance}
+	\end{align}
+	
+	The distance $d$ of point $P\brak{x, y, z}$ with position vector $\vec{r}_P = \myvec{\alpha \\ \beta \\ \gamma}$ from the plane $\vec{r}^T \vec{n}_0 = c$ is given by the scalar projection formula:
+	\begin{align}
+		d = \frac{\mydet{\vec{r}_P^T \vec{n}_0 - c}}{\norm{\vec{n}_0}} \label{eq:per_dis}
+	\end{align}
+	
+	The unit vector $\hat{w}$ aligned with the sum vector $\vec{w}$ is given by:
+	\begin{align}
+		\hat{w} = \frac{\vec{w}}{\norm{\vec{w}}}
+	\end{align} \label{unit_vector}
+	For any point $\vec{r} = \myvec{x \\ y \\ z}$ on the plane, the vector equation satisfies is
+	\begin{align} 
+	\brak{\vec{r} - \vec{r}_A}^T \vec{n}_0 = 0 \implies \vec{r}^T \vec{n}_0 = \vec{r}_A^T \vec{n}_0.\label{eq:plane}
+	\end{align}
+	King's Property:
+	\begin{align}
+		\int_a^b f(x) \, dx = \int_a^b f(a + b - x) \, dx \label{king_prop}
+		\end{align}
+		Inverse trigonometric antiderivative:
+		\begin{align}
+			\int \frac{1}{1 + t^2} \, dt = \tan^{-1}\brak{t} \label{eq:intan}
+			\end{align}
+			Law of Total Probability:
+		\begin{align}
+			P\brak{A} &= \sum_{k=1}^{3} P\brak{E_k} P\brak{A \mid E_k} \label{tot_prop}
+			\end{align} 
+			Bayes' Theorem to compute the conditional probability $P\brak{E_1 \mid A}$:
+			\begin{align}
+				P\brak{E_1 \mid A} &= \frac{P\brak{E_1} P\brak{A \mid E_1}}{P\brak{A}} \label{bayer}
+				\end{align} 
+					Euler's Method:
+				\begin{align}
+					\frac{dy}{dx} = f\brak{x, y}
+				\end{align}
+				\begin{align}
+					y_{n+1} &= y_n + h \cdot f\brak{x_n, y_n}\label{euler_met}
+				\end{align}
+		
+	
+\end{enumerate}
