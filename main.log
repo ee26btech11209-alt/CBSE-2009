@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.1)  7 NOV 2026 14:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.1)  7 NOV 2026 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1562,81 +1562,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 307--315
 
  []
 
-[13] [14]
-<figs/q14.png, id=290, 722.7pt x 433.62pt>
+<figs/q11.png, id=234, 722.7pt x 433.62pt>
+File: figs/q11.png Graphic file (type png)
+<use figs/q11.png>
+Package pdftex.def Info: figs/q11.png  used on input line 319.
+(pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
+[13 <./figs/q11.png>] [14] [15]
+<figs/q14.png, id=306, 722.7pt x 433.62pt>
 File: figs/q14.png Graphic file (type png)
 <use figs/q14.png>
-Package pdftex.def Info: figs/q14.png  used on input line 450.
+Package pdftex.def Info: figs/q14.png  used on input line 456.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
- [15] [16 <./figs/q14.png>] [17]
-<figs/q17.png, id=347, 722.7pt x 433.62pt>
+ [16 <./figs/q14.png>] [17] [18]
+<figs/q17.png, id=361, 722.7pt x 433.62pt>
 File: figs/q17.png Graphic file (type png)
 <use figs/q17.png>
-Package pdftex.def Info: figs/q17.png  used on input line 597.
+Package pdftex.def Info: figs/q17.png  used on input line 603.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
- [18] [19 <./figs/q17.png>]
+ [19 <./figs/q17.png>]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 6
-38.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+44.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 638.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 644.
  [20]
-<figs/q20.png, id=407, 722.7pt x 433.62pt>
+<figs/q20.png, id=400, 722.7pt x 433.62pt>
 File: figs/q20.png Graphic file (type png)
 <use figs/q20.png>
-Package pdftex.def Info: figs/q20.png  used on input line 709.
+Package pdftex.def Info: figs/q20.png  used on input line 715.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
- [21 <./figs/q20.png>]
-<figs/q21.png, id=427, 722.7pt x 433.62pt>
+ [21]
+[22 <./figs/q20.png>]
+<figs/q21.png, id=437, 722.7pt x 433.62pt>
 File: figs/q21.png Graphic file (type png)
 <use figs/q21.png>
-Package pdftex.def Info: figs/q21.png  used on input line 760.
+Package pdftex.def Info: figs/q21.png  used on input line 766.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
- [22 <./figs/q21.png>]
-<figs/q22.png, id=452, 722.7pt x 466.8642pt>
+ [23 <./figs/q21.png>]
+<figs/q22.png, id=464, 722.7pt x 466.8642pt>
 File: figs/q22.png Graphic file (type png)
 <use figs/q22.png>
-Package pdftex.def Info: figs/q22.png  used on input line 799.
+Package pdftex.def Info: figs/q22.png  used on input line 805.
 (pdftex.def)             Requested size: 218.5194pt x 141.16452pt.
- [23 <./figs/q22.png>]
-<figs/q23.png, id=481, 722.7pt x 466.8642pt>
+ [24 <./figs/q22.png>]
+<figs/q23.png, id=492, 722.7pt x 466.8642pt>
 File: figs/q23.png Graphic file (type png)
 <use figs/q23.png>
-Package pdftex.def Info: figs/q23.png  used on input line 853.
+Package pdftex.def Info: figs/q23.png  used on input line 859.
 (pdftex.def)             Requested size: 218.5194pt x 141.16452pt.
- [24] [25 <./figs/q23.png>]
-[26]
-<figs/q25.png, id=536, 925.056pt x 467.8278pt>
+ [25 <./figs/q23.png>] [26] [27]
+<figs/q25.png, id=550, 925.056pt x 467.8278pt>
 File: figs/q25.png Graphic file (type png)
 <use figs/q25.png>
-Package pdftex.def Info: figs/q25.png  used on input line 951.
+Package pdftex.def Info: figs/q25.png  used on input line 957.
 (pdftex.def)             Requested size: 218.5194pt x 110.51062pt.
- [27 <./figs/q25.png>]
-<figs/quad_plot.png, id=552, 1413.28pt x 770.88pt>
+ [28 <./figs/q25.png>]
+<figs/quad_plot.png, id=565, 1413.28pt x 770.88pt>
 File: figs/quad_plot.png Graphic file (type png)
 <use figs/quad_plot.png>
-Package pdftex.def Info: figs/quad_plot.png  used on input line 994.
+Package pdftex.def Info: figs/quad_plot.png  used on input line 1000.
 (pdftex.def)             Requested size: 182.09764pt x 99.32394pt.
- [28 <./figs/quad_plot.png>] [29]
-<figs/3D_plot.png, id=594, 1413.28pt x 770.88pt>
+ [29 <./figs/quad_plot.png>] [30]
+<figs/3D_plot.png, id=603, 1413.28pt x 770.88pt>
 File: figs/3D_plot.png Graphic file (type png)
 <use figs/3D_plot.png>
-Package pdftex.def Info: figs/3D_plot.png  used on input line 1081.
+Package pdftex.def Info: figs/3D_plot.png  used on input line 1087.
 (pdftex.def)             Requested size: 182.09764pt x 99.32394pt.
- [30 <./figs/3D_plot.png>] [31] [32]
-Overfull \hbox (22.77742pt too wide) detected at line 1213
+
+[31 <./figs/3D_plot.png>] [32] [33]
+Overfull \hbox (22.77742pt too wide) detected at line 1219
 []
  []
 
-<figs/q31.png, id=646, 1381.16pt x 770.88pt>
+<figs/q31.png, id=655, 1381.16pt x 770.88pt>
 File: figs/q31.png Graphic file (type png)
 <use figs/q31.png>
-Package pdftex.def Info: figs/q31.png  used on input line 1216.
+Package pdftex.def Info: figs/q31.png  used on input line 1222.
 (pdftex.def)             Requested size: 182.09764pt x 101.62944pt.
-[33] [34 <./figs/q31.png>]) [35] (./main.aux)
+[34] [35 <./figs/q31.png>]) [36] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1645,13 +1650,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7CCC8BAB4AE4687A4E9494FD344BF9D7;316.
  ) 
 Here is how much of TeX's memory you used:
- 54866 strings out of 467533
- 1311671 string characters out of 5422139
- 1957669 words of memory out of 5000000
- 82572 multiletter control sequences out of 15000+600000
+ 54882 strings out of 467533
+ 1311930 string characters out of 5422139
+ 1957733 words of memory out of 5000000
+ 82584 multiletter control sequences out of 15000+600000
  662021 words of font info for 108 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 109i,18n,118p,1194b,1437s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,18n,118p,1194b,1438s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -1665,10 +1670,10 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 3772161 bytes).
+Output written on main.pdf (36 pages, 3834609 bytes).
 PDF statistics:
- 854 PDF objects out of 1000 (max. 8388607)
- 725 compressed objects within 8 object streams
- 436 named destinations out of 1000 (max. 500000)
- 203 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 864 PDF objects out of 1000 (max. 8388607)
+ 732 compressed objects within 8 object streams
+ 440 named destinations out of 1000 (max. 500000)
+ 208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

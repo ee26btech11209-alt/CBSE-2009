@@ -289,7 +289,7 @@
   \item Find the intervals in which the function $f$ given by $f(x) = \sin x + \cos x, \; 0 \le x \le 2\pi$ is strictly increasing or strictly decreasing.\\
   \solution
   \begin{align}
-  	f\brak{x} = \sin x + \cos x, \quad x \in \sbrak{0, 2\pi}
+  	f\brak{x} = \sin x + \cos x, \quad x \in \brak{0, 2\pi}
   \end{align}
   Differentiating,From \eqref{eq:sindif} \eqref{eq:cosdif}
   \begin{align}
@@ -305,15 +305,24 @@
   \begin{align}
   	x = \frac{\pi}{4} \quad \text{and} \quad x = \frac{5\pi}{4}
   \end{align}
-  For $x \in \left(0, \frac{\pi}{4}\right)$, $\cos x > \sin x \implies f'\brak{x} > 0$.
-  Hence, $f\brak{x}$ is \textbf{strictly increasing} on $\sbrak{0, \frac{\pi}{4}}$.\\
-  For $x \in \left(\frac{\pi}{4}, \frac{5\pi}{4}\right)$, $\sin x > \cos x \implies f'\brak{x} < 0$.
-  Hence, $f\brak{x}$ is \textbf{strictly decreasing} on $\sbrak{\frac{\pi}{4}, \frac{5\pi}{4}}$.\\
-  For $x \in \left(\frac{5\pi}{4}, 2\pi\right)$, $\cos x > \sin x \implies f'\brak{x} > 0$.
-  Hence, $f\brak{x}$ is \textbf{strictly increasing} on $\sbrak{\frac{5\pi}{4}, 2\pi}$.
-  $f\brak{x}$ is strictly increasing on $\sbrak{0, \frac{\pi}{4}} \cup \sbrak{\frac{5\pi}{4}, 2\pi}$ and strictly decreasing on $\sbrak{\frac{\pi}{4}, \frac{5\pi}{4}}$.\\
+  For $x \in \brak{(0, \frac{\pi}{4})}$, $\cos x > \sin x \implies f'\brak{x} > 0$.
+  Hence, $f\brak{x}$ is \textbf{strictly increasing} on $\brak{0, \frac{\pi}{4}}$.\\
+  For $x \in \brak{\frac{\pi}{4}, \frac{5\pi}{4}})$, $\sin x > \cos x \implies f'\brak{x} < 0$.
+  Hence, $f\brak{x}$ is \textbf{strictly decreasing} on $\brak{\frac{\pi}{4}, \frac{5\pi}{4}}$.\\
+  For $x \in \brak{\frac{5\pi}{4}, 2\pi}$, $\cos x > \sin x \implies f'\brak{x} > 0$.
+  Hence, $f\brak{x}$ is \textbf{strictly increasing} on $\brak{\frac{5\pi}{4}, 2\pi}$.
+  $f\brak{x}$ is strictly increasing on $\brak{0, \frac{\pi}{4}} \cup \brak{\frac{5\pi}{4}, 2\pi}$ and strictly decreasing on $\brak{\frac{\pi}{4}, \frac{5\pi}{4}}$.\\
   
-  $f\brak{x}$ is strictly increasing on $\sbrak{0, \frac{\pi}{4}} \cup \sbrak{\frac{5\pi}{4}, 2\pi}$ and strictly decreasing on $\sbrak{\frac{\pi}{4}, \frac{5\pi}{4}}$.
+  $f\brak{x}$ is strictly increasing on $\brak{0, \frac{\pi}{4}} \cup \brak{\frac{5\pi}{4}, 2\pi}$ and strictly decreasing on $\brak{\frac{\pi}{4}, \frac{5\pi}{4}}$.
+  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
+  	\centering
+  	\includegraphics[width=0.6\textwidth]{figs/q11}
+  	\caption{Function Representation}
+  	\label{Function}
+  \end{figure}
+  \begin{lstlisting}
+  	/codes/q11.py
+  \end{lstlisting}
   %=====================Q13================
   \item If $\sin y = x \sin\brak{a + y}$, prove that: $$\frac{dy}{dx} = \frac{\sin^2\brak{a + y}}{\sin a}$$
   
@@ -330,14 +339,14 @@
   \end{align}
   
   \begin{align}
-  	\frac{\partial F}{\partial x} &= \frac{\partial}{\partial x}\sbrak{\sin y - x \sin\brak{a + y}}
+  	\frac{\partial F}{\partial x} &= \frac{\partial}{\partial x}\brak{\sin y - x \sin\brak{a + y}}
   	\\
   	&= -\sin\brak{a + y}
   	\label{eq:EE26BTECH11202-partial_x}
   \end{align}
   From \eqref{eq:cosdif}
   \begin{align}
-  	\frac{\partial F}{\partial y} &= \frac{\partial}{\partial y}\sbrak{\sin y - x \sin\brak{a + y}}
+  	\frac{\partial F}{\partial y} &= \frac{\partial}{\partial y}\brak{\sin y - x \sin\brak{a + y}}
   	\\
   	&= \cos y - x \cos\brak{a + y}  \label{eq:EE26BTECH11202-partial_y}
     \end{align}
@@ -360,7 +369,6 @@
      	\frac{\partial F}{\partial y} = \frac{\sin a}{\sin\brak{a + y}}
      	\label{eq:EE26BTECH11202-partial_y_simplified}
      \end{align}
-     
      Substituting \eqref{eq:EE26BTECH11202-partial_x} and \eqref{eq:EE26BTECH11202-partial_y_simplified} into \eqref{eq:implicit_theorem}:
      \begin{align}
      	\frac{dy}{dx} &= -\frac{-\sin\brak{a + y}}{\frac{\sin a}{\sin\brak{a + y}}}
@@ -372,7 +380,7 @@
   \item If $\brak{\cos x}^y = \brak{\sin y}^x$, find $\frac{dy}{dx}$.
   \solution
   \begin{align}
-  	\ln\sbrak{\brak{\cos x}^y} &= \ln\sbrak{\brak{\sin y}^x}
+  	\ln\brak{\brak{\cos x}^y} &= \ln\brak{\brak{\sin y}^x}
   	\\
   	\implies y \ln\brak{\cos x} &= x \ln\brak{\sin y}
   \end{align}
@@ -383,7 +391,7 @@
   \end{align}
  
   \begin{align}
-  \frac{\partial F}{\partial x} &= \frac{\partial}{\partial x}\sbrak{y \ln\brak{\cos x} - x \ln\brak{\sin y}}
+  \frac{\partial F}{\partial x} &= \frac{\partial}{\partial x}\brak{y \ln\brak{\cos x} - x \ln\brak{\sin y}}
   \\
   &= y \cdot \frac{1}{\cos x} \cdot \brak{-\sin x} - \ln\brak{\sin y} \cdot 1
   \\
@@ -391,7 +399,7 @@
   \label{partial_x_val}
   \end{align}
   \begin{align}
-  	\frac{\partial F}{\partial y} &= \frac{\partial}{\partial y}\sbrak{y \ln\brak{\cos x} - x \ln\brak{\sin y}}
+  	\frac{\partial F}{\partial y} &= \frac{\partial}{\partial y}\brak{y \ln\brak{\cos x} - x \ln\brak{\sin y}}
   	\\
   	&= \ln\brak{\cos x} \cdot 1 - x \cdot \frac{1}{\sin y} \cdot \cos y
   	\\
@@ -404,8 +412,6 @@
    	\\
    	&= \frac{y \tan x + \ln\brak{\sin y}}{\ln\brak{\cos x} - x \cot y}
    \end{align}
-  
-  
   %==================Q15=====================
   \item 
     Evaluate:
@@ -424,7 +430,7 @@
     \begin{align}
     	\brak{\sin\brak{2t}} \system{L} \frac{2}{s^2 + 4}
     	\\
-    	\implies G\brak{s} = \brak{t \sin\brak{2t}} \system{L}  -\frac{d}{ds} \sbrak{\frac{2}{s^2 + 4}}
+    	\implies G\brak{s} = \brak{t \sin\brak{2t}} \system{L}  -\frac{d}{ds} \brak{\frac{2}{s^2 + 4}}
     	\\
     	&= -\brak{\frac{-2 \cdot 2s}{\brak{s^2 + 4}^2}} = \frac{4s}{\brak{s^2 + 4}^2}
     	\label{eq:EE26BTECH11202-G_s}
@@ -456,22 +462,22 @@
     \end{lstlisting}
   %======================Q16=======
   \item   Prove that:
-  $$\cot^{-1}\brak{ \frac{\sqrt{1 + \sin x} + \sqrt{1 - \sin x}}{\sqrt{1 + \sin x} - \sqrt{1 - \sin x}} } = \frac{x}{2}, \quad x \in \left(0, \frac{\pi}{4}\right)$$
+  $$\cot^{-1}\brak{ \frac{\sqrt{1 + \sin x} + \sqrt{1 - \sin x}}{\sqrt{1 + \sin x} - \sqrt{1 - \sin x}} } = \frac{x}{2}, \quad x \in 0, \brak{\frac{\pi}{4}})$$
   \solution
   
   \begin{align}
-  	\frac{x}{2} \in \left(0, \frac{\pi}{8}\right)
+  	\frac{x}{2} \in \brak{0, \frac{\pi}{8}}
   \end{align}
-  For any angle in the first octant $\left(0, \frac{\pi}{8}\right)$:
+  For any angle in the first octant $\brak{0, \frac{\pi}{8}}$:
   \begin{align}
   	\cos\frac{x}{2} > \sin\frac{x}{2} > 0 \implies \cos\frac{x}{2} - \sin\frac{x}{2} > 0
   \end{align}
   Extracting positive real roots for \eqref{eq:EE26BTECH11202-plus_sin_decomp} and \eqref{eq:EE26BTECH11202-minus_sin_decomp}:
   \begin{align}
-  	\sqrt{1 + \sin x} &= \left|\cos\frac{x}{2} + \sin\frac{x}{2}\right| = \cos\frac{x}{2} + \sin\frac{x}{2}
+  	\sqrt{1 + \sin x} &= \mydet{\cos\frac{x}{2} + \sin\frac{x}{2}} = \cos\frac{x}{2} + \sin\frac{x}{2}
   	\label{eq:EE26BTECH11202-radical_plus}
   	\\
-  	\sqrt{1 - \sin x} &= \left|\cos\frac{x}{2} - \sin\frac{x}{2}\right| = \cos\frac{x}{2} - \sin\frac{x}{2}
+  	\sqrt{1 - \sin x} &= \mydet{\cos\frac{x}{2} - \sin\frac{x}{2}} = \cos\frac{x}{2} - \sin\frac{x}{2}
   	\label{eq:EE26BTECH11202-radical_minus}
   \end{align}
   Substituting \eqref{eq:EE26BTECH11202-radical_plus} and \eqref{eq:EE26BTECH11202-radical_minus} into the numeratorand denominator
@@ -500,7 +506,7 @@
   \begin{align}
   	\text{LHS} = \cot^{-1}\brak{\cot\frac{x}{2}}
   \end{align}
-  Since $\frac{x}{2} \in \left(0, \frac{\pi}{8}\right) \subset \brak{0, \pi}$, which lies strictly within the principal branch of $\cot^{-1}\brak{\theta}$, we obtain:
+  Since $\frac{x}{2} \in \brak{(0, \frac{\pi}{8}}) \subset \brak{0, \pi}$, which lies strictly within the principal branch of $\cot^{-1}\brak{\theta}$, we obtain:
   \begin{align}
   	\cot^{-1}\brak{\cot\frac{x}{2}} = \frac{x}{2} = \text{RHS}
   \end{align}
@@ -692,7 +698,7 @@
  	\int \cot\brak{v} \, dv = -\int \frac{dx}{x}
  \end{align}
  \begin{align}
- 	\ln \left| \sin\brak{v} \right| = -\ln \left| x \right| + \ln \left| C \right|
+ 	\ln  \mydet{\sin\brak{v}} = -\ln \mydet{x} + \ln \mydet{C}
  \end{align}
  \begin{align}
  	\ln \mydet{\sin\brak{v}} = \ln \mydet{\frac{C}{x}} \implies \sin\brak{v} = \frac{C}{x}
@@ -977,7 +983,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  	\text{Area}\brak{\Omega} &= \int_{y=-2}^{y=1} \brak{x_R\brak{y} - x_L\brak{y}} \, dy
  	\\
  	&= \int_{-2}^{1} \brak{2 - y - y^2} \, dy \\
- 	 &= \sbrak{2y - \frac{y^2}{2} - \frac{y^3}{3}}_{-2}^{1}
+ 	 &= \brak{2y - \frac{y^2}{2} - \frac{y^3}{3}}_{-2}^{1}
  	\\
  	&= \brak{2\brak{1} - \frac{1^2}{2} - \frac{1^3}{3}} - \brak{2\brak{-2} - \frac{\brak{-2}^2}{2} - \frac{\brak{-2}^3}{3}}
  	\\
@@ -1089,7 +1095,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
                                                  5 & 1 & 0 \\
                                                  0 & 1 & 3 \\} using elementary row operations.
                                                  \solution
-  Constructing the augmented matrix $\sbrak{\mathbf{A} \mid \mathbf{I}_3}$ and performing elementary row operations reduces the system to $\sbrak{\mathbf{I}_3 \mid \mathbf{A}^{-1}}$ and as
+  Constructing the augmented matrix $\brak{\mathbf{A} \mid \mathbf{I}_3}$ and performing elementary row operations reduces the system to $\brak{\mathbf{I}_3 \mid \mathbf{A}^{-1}}$ and as
  $\mydet{\vec{A}} = 1 \neq 0$
  \begin{align}
  	\mathbf{M} = \myvec{2 & 0 & -1 & \vline & 1 & 0 & 0 \\ 5 & 1 & 0 & \vline & 0 & 1 & 0 \\ 0 & 1 & 3 & \vline & 0 & 0 & 1}
@@ -1245,7 +1251,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \begin{align}
  	A\brak{x} = \frac{1}{2} x y = \frac{1}{2} x \sqrt{k^2 - 2kx}
  \end{align}
- To simplify differentiation, define the auxiliary objective function $Z\brak{x} = \sbrak{A\brak{x}}^2$:
+ To simplify differentiation, define the auxiliary objective function $Z\brak{x} = \brak{A\brak{x}}^2$:
  \begin{align}
  	Z\brak{x} = \frac{1}{4} x^2 \brak{k^2 - 2kx} = \frac{1}{4} \brak{k^2 x^2 - 2k x^3}
  	\label{eq:EE26BTECH11202-squared_area}
@@ -1273,7 +1279,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  
  Evaluating at the critical point $x = \frac{k}{3}$:
  \begin{align}
- 	\left. \frac{d^2 Z}{dx^2} \right|_{x = \frac{k}{3}} &= \frac{1}{4} \brak{2k^2 - 12k \brak{\frac{k}{3}}}
+ 	\mydet{\frac{d^2 Z}{dx^2}}_{x = \frac{k}{3}} &= \frac{1}{4} \brak{2k^2 - 12k \brak{\frac{k}{3}}}
  	\\
  	&= \frac{1}{4} \brak{2k^2 - 4k^2} = -\frac{k^2}{2} < 0
  \end{align}
