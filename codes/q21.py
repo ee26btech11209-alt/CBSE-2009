@@ -1,54 +1,64 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 1. Define ODE right-hand side f(x, y) = (tan(x) - y) * sec^2(x)
-def f(x, y):
-    return (np.tan(x) - y) / (np.cos(x)**2)
+# 1. Point definitions
+A = np.array([3, -1, 2])
+B = np.array([5, 2, 4])
+C = np.array([-1, -1, 6])
+P = np.array([6, 5, 9])
 
-# 2. Setup initial conditions & numerical domain
-x0 = 0.0
-y0 = 0.0  # y(0) = 0 => C = 1
-x_end = 1.2
-h = 0.10
-n_steps = int(round((x_end - x0) / h))
+# 2. Plane equation: 3x - 4y + 3z = 19
+a, b, c, d_val = 3, -4, 3, -19
 
-x_euler = np.zeros(n_steps + 1)
-y_euler = np.zeros(n_steps + 1)
+# Foot of perpendicular from P onto the plane
+foot = P - ((a * P[0] + b * P[1] + c * P[2] + d_val) / (a**2 + b**2 + c**2)) * np.array([a, b, c])
 
-x_euler[0] = x0
-y_euler[0] = y0
+# 3. Meshgrid for plane surface
+x_grid = np.linspace(-2, 8, 30)
+y_grid = np.linspace(-2, 8, 30)
+X, Y = np.meshgrid(x_grid, y_grid)
+Z = (19 - 3 * X + 4 * Y) / 3.0
 
-# 3. Euler's Method Iteration
-for i in range(n_steps):
-    x_euler[i+1] = x_euler[i] + h
-    y_euler[i+1] = y_euler[i] + h * f(x_euler[i], y_euler[i])
+# 4. Figure & 3D Axes setup
+fig = plt.figure(figsize=(11, 8), dpi=150)
+ax = fig.add_subplot(111, projection='3d')
 
-# 4. Exact solution y(x) = tan(x) - 1 + exp(-tan(x))
-def exact_y(x):
-    return np.tan(x) - 1.0 + np.exp(-np.tan(x))
+# Camera view angle optimized to separate P and F clearly
+ax.view_init(elev=18, azim=-125)
 
-x_exact = np.linspace(x0, x_end, 500)
-y_exact = exact_y(x_exact)
+# Translucent plane surface with wireframe grid for spatial depth
+ax.plot_surface(X, Y, Z, alpha=0.20, color='#3182BD', edgecolor='#2B5C8F', linewidth=0.3)
 
-# 5. Plot setup
-fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
+# Scatter points lying in the plane
+ax.scatter(*A, color='#1F77B4', s=90, depthshade=False, label='A (3, -1, 2)', zorder=5)
+ax.scatter(*B, color='#1F77B4', s=90, depthshade=False, label='B (5, 2, 4)', zorder=5)
+ax.scatter(*C, color='#1F77B4', s=90, depthshade=False, label='C (-1, -1, 6)', zorder=5)
 
-ax.plot(x_exact, y_exact, color='#1F77B4', linewidth=2.5, 
-        label=r'Exact Solution: $y = \tan x - 1 + e^{-\tan x}$')
-ax.plot(x_euler, y_euler, color='#D62728', linestyle='--', marker='o', 
-        markersize=6, linewidth=2, label=r"Euler's Method ($h = 0.10$)")
+# Scatter external point P and foot of perpendicular F
+ax.scatter(*P, color='#D62728', s=110, depthshade=False, label='P (6, 5, 9)', zorder=6)
+ax.scatter(*foot, color='#2CA02C', s=100, depthshade=False, 
+           label=r'Foot $F\left(\frac{93}{17}, \frac{97}{17}, \frac{144}{17}\right)$', zorder=6)
 
-# Point annotations
-for xi, ye in zip(x_euler[::2], y_euler[::2]):
-    ax.annotate(f'({xi:.1f}, {ye:.3f})', (xi, ye), textcoords="offset points", 
-                xytext=(0, 10), ha='center', fontsize=9, fontweight='bold', color='#D62728')
+# Perpendicular distance segment between P and F
+ax.plot([P[0], foot[0]], [P[1], foot[1]], [P[2], foot[2]], 
+        color='#D62728', linestyle='--', linewidth=3, 
+        label=r'Perpendicular Distance $d = \frac{6}{\sqrt{34}}$', zorder=7)
 
-ax.set_xlabel('$x$', fontsize=12, fontweight='bold', labelpad=10)
-ax.set_ylabel('$y$', fontsize=12, fontweight='bold', labelpad=10)
-ax.set_title(r"Euler's Method vs. Exact Solution for $\cos^2 x \frac{dy}{dx} + y = \tan x$", 
+# Direct point annotations in 3D space
+ax.text(A[0], A[1]-1.2, A[2], '  A(3, -1, 2)', fontsize=9.5, fontweight='bold', color='#1F77B4')
+ax.text(B[0], B[1]+0.5, B[2], '  B(5, 2, 4)', fontsize=9.5, fontweight='bold', color='#1F77B4')
+ax.text(C[0]-1.5, C[1], C[2], 'C(-1, -1, 6)  ', fontsize=9.5, fontweight='bold', color='#1F77B4')
+ax.text(P[0]+0.3, P[1]+0.3, P[2]+0.3, '  P(6, 5, 9)', fontsize=10, fontweight='bold', color='#D62728')
+ax.text(foot[0]-1.2, foot[1]-1.2, foot[2]-0.5, 'F (Foot)', fontsize=9.5, fontweight='bold', color='#2CA02C')
+
+# Labels & legend formatting
+ax.set_xlabel('$X$', fontsize=12, fontweight='bold', labelpad=10)
+ax.set_ylabel('$Y$', fontsize=12, fontweight='bold', labelpad=10)
+ax.set_zlabel('$Z$', fontsize=12, fontweight='bold', labelpad=10)
+ax.set_title(r"Plane $3x - 4y + 3z = 19$ & Distance from $P(6,5,9)$", 
              fontsize=14, fontweight='bold', pad=15)
-ax.grid(True, linestyle=':', alpha=0.7)
-ax.legend(loc='upper left', fontsize=11, frameon=True, facecolor='white', framealpha=0.95)
+
+ax.legend(loc='upper left', fontsize=10.5, frameon=True, facecolor='white', framealpha=0.95)
 
 plt.tight_layout()
 plt.show()

@@ -1,20 +1,47 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-# 1. Simulation parameters
-n_questions = 5
-p_correct = 1 / 3
-n_simulations = 1_000_000
+# 1. Vector definitions
+a = np.array([1, 1, 1])
+b = np.array([1, 2, 3])
 
-# 2. Monte Carlo Simulation using NumPy
-np.random.seed(42)
-simulations = np.random.binomial(n=n_questions, p=p_correct, size=n_simulations)
+# Sum and Difference vectors
+u = a + b  # (2, 3, 4)
+v = a - b  # (0, -1, -2)
 
-# Calculate simulated probability for X >= 4
-successes = np.sum(simulations >= 4)
-p_simulated = successes / n_simulations
+# 2. Cross product and unit normal vector
+w = np.cross(u, v)  # (-2, 4, -2)
+w_norm = np.linalg.norm(w)
+n_hat = w / w_norm  # Unit normal vector
 
-# Analytical probability computation (11 / 243)
-p_analytical = 11 / 243
+# 3. 3D Plotting
+fig = plt.figure(figsize=(10, 8), dpi=150)
+ax = fig.add_subplot(111, projection='3d')
+origin = np.array([0, 0, 0])
 
-print(f"Analytical Probability P(X >= 4): {p_analytical:.6f} (11/243)")
-print(f"Simulated  Probability P(X >= 4): {p_simulated:.6f}")
+# Plotting vectors
+ax.quiver(*origin, *u, color='#1F77B4', linewidth=2.5, 
+          label=r'$\vec{a}+\vec{b} = (2, 3, 4)$', arrow_length_ratio=0.08)
+ax.quiver(*origin, *v, color='#2CA02C', linewidth=2.5, 
+          label=r'$\vec{a}-\vec{b} = (0, -1, -2)$', arrow_length_ratio=0.1)
+ax.quiver(*origin, *n_hat, color='#D62728', linewidth=3.0, 
+          label=r'$\hat{n} = \frac{1}{\sqrt{6}}(-1, 2, -1)$', arrow_length_ratio=0.2)
+ax.quiver(*origin, *-n_hat, color='#E377C2', linestyle='--', linewidth=2.0, 
+          label=r'$-\hat{n} = \frac{1}{\sqrt{6}}(1, -2, 1)$', arrow_length_ratio=0.2)
+
+# Axis limits & labels
+ax.set_xlim([-2, 3])
+ax.set_ylim([-2, 4])
+ax.set_zlim([-2, 5])
+
+ax.set_xlabel('$X$', fontsize=12, fontweight='bold')
+ax.set_ylabel('$Y$', fontsize=12, fontweight='bold')
+ax.set_zlabel('$Z$', fontsize=12, fontweight='bold')
+ax.set_title(r"3D Vectors: $(\vec{a}+\vec{b})$, $(\vec{a}-\vec{b})$ & Unit Normal $\hat{n}$", 
+             fontsize=14, fontweight='bold', pad=15)
+
+ax.grid(True, linestyle=':', alpha=0.6)
+ax.legend(loc='upper left', fontsize=10, frameon=True, facecolor='white', framealpha=0.95)
+
+plt.tight_layout()
+plt.show()

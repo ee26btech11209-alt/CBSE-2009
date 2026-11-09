@@ -23,82 +23,7 @@
     \begin{align}
     	x=1 , y=-2
     \end{align}
-	%--------------------------------q2---------------------
-   
-   %===============================Q3=========================
-   
-   \item Evaluate:     $$\int \frac{\sec^2(\sqrt{x})}{\sqrt{x}} \, dx$$
-   \solution
-   Let:
-   \begin{align}
-   x = t^2 \quad \implies \quad \sqrt{x} = t \quad (\text{for } t > 0)
-   \end{align}
-   Differentiating both sides with respect to $t$:
-   \begin{align}
-   	dx = 2t \, dt
-   	\end{align}
-   	
-   	Substitute equations \brak{1.2.3.1} and \brak{1.2.3.2} into the original integral:
-   \begin{align}
-	I &= \int \frac{\sec^2(\sqrt{x})}{\sqrt{x}} \, dx \\
-	&= \int \frac{\sec^2(t)}{t} \cdot (2t \, dt) \\
-	&= \int \sec^2(t) \cdot \frac{2t}{t} \, dt \\
-	&= 2 \int \sec^2(t) \, dt
-   	\end{align}
-   	 From \eqref{eq:tandiff}
-   	\begin{align}
-   		I = 2 \tan(t) + C
-   		\end{align}
-   	From \eqref{euler_met}
-   		\begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
-   			\centering
-   			\includegraphics[width=0.6\textwidth]{figs/q2}
-   			\caption{Euler method vs Exact solution}
-   			\label{euler_fig1}
-   		\end{figure} \newpage
-   		\begin{lstlisting}
-   			/codes/q2.py
-   		\end{lstlisting}
-   %==============================Q4=======================================
-   \item Evaluate:
-   $$\int \frac{\cos x}{\sqrt{1 + \sin x}} \, dx$$
-   \solution
-   
-   Let:
-   \begin{align}
-	u = 1 + \sin x
-   	\end{align}
-   	Differentiating both sides with respect to $x$,
-   	From \eqref{eq:sindif}
-   	\begin{align}
-   		\frac{du}{dx} = \cos x \quad \implies \quad du = \cos x \, dx
-   	\end{align}
-   	Substitute $u$ and $du$ into the original integral $I_2$:
-   	\begin{align}
-   		I_2 &= \int \frac{\cos x \, dx}{\sqrt{1 + \sin x}} \\
-   		&= \int \frac{du}{\sqrt{u}} \\
-   		&= \int u^{-1/2} \, du\\
-   		I_2 &= \frac{u^{-1/2 + 1}}{-\frac{1}{2} + 1} + C_2 \\
-   		&= \frac{u^{1/2}}{\frac{1}{2}} + C_2 
-   		\end{align}
-   		\begin{align}
-   			&= 2 \sqrt{u} + C_2
-   	\end{align}
-   	 Replacing $u$ with $1 + \sin x$:
-   	\begin{align}
-   		I_2 = 2 \sqrt{1 + \sin x} + C_2
-   	\end{align}
-   		From \eqref{euler_met}
-   	\begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
-   		\centering
-   		\includegraphics[width=0.6\textwidth]{figs/q3}
-   		\caption{Euler method vs Exact solution}
-   		\label{euler_fig2}
-   	\end{figure} 
-   	\begin{lstlisting}
-   		/codes/q3.py
-   	\end{lstlisting}
-   	
+
    %==========================Q5========================================
    \item Write the principal value of $\cos^{-1}\brak{\cos \frac{7\pi}{6}}$ \\
   \solution 
@@ -113,7 +38,7 @@
   	\label{fig:my_image}
   	\end{figure}
   	\begin{lstlisting}
-  		/codes/q4.py
+  		/codes/q2.py
   		\end{lstlisting}
    
    
@@ -184,20 +109,48 @@
     %===============================Q8============================
     \item Find the value of $p$ if: $$(2\vec{e}_1 + 6\vec{e}_2 + 27\vec{e}_3) \times (\vec{e}_1 + 3\vec{e}_2 + p\vec{e}_3) = \vec{0}$$
     \solution
-   Let:
-   \begin{align}
-   	\vec{w} = \myvec{2 \\ 6 \\ 27}, \quad \vec{v} = \myvec{1 \\ 3 \\ p}
-   \end{align}
-   From \eqref{eq:cross}
-   \begin{align}
-     \myvec{6p - 27\brak{3} \\ 27\brak{1} - 2p \\ 2\brak{3} - 6\brak{1}} = \myvec{6p - 81 \\ 27 - 2p \\ 0}=\vec{0}
-    \end{align}
-    \begin{align}
-    	6p - 81 = 0 &\implies p = \frac{27}{2}
-    	\\
-    	27 - 2p = 0 &\implies p = \frac{27}{2}
-    \end{align}
-    Thus, the required value of $p$ is $\frac{27}{2}$.
+  \begin{align}
+  	\vec{A} = \myvec{2 \\ 6 \\ 27}, \quad \vec{B} = \myvec{1 \\ 3 \\ p}
+  \end{align}
+  From the definitions of the sub-vectors $A_{ij}$ and $B_{ij}$, we form:
+  \begin{align}
+  	A_{23} = \myvec{6 \\ 27}, &\quad B_{23} = \myvec{3 \\ p} \\
+  	A_{31} = \myvec{27 \\ 2}, &\quad B_{31} = \myvec{p \\ 1} \\
+  	A_{12} = \myvec{2 \\ 6}, &\quad B_{12} = \myvec{1 \\ 3}
+  \end{align}
+  Evaluating the determinants of the combined sub-vector matrices $\myvec{A_{ij} & B_{ij}}$:
+  \begin{align}
+  	\mydet{A_{23} & B_{23}} &= \mydet{6 & 3 \\ 27 & p} = 6p - 81
+  	\label{eq:det23} \\
+  	\mydet{A_{31} & B_{31}} &= \mydet{27 & p \\ 2 & 1} = 27 - 2p
+  	\label{eq:det31} \\
+  	\mydet{A_{12} & B_{12}} &= \mydet{2 & 1 \\ 6 & 3} = 2(3) - 6(1) = 0
+  	\label{eq:det12}
+  \end{align}
+  Substituting equations \eqref{eq:det23},\eqref{eq:det12} into the cross product formula \eqref{eq:cross}:
+  \begin{align}
+  	\vec{A} \times \vec{B} = \myvec{
+  		6p - 81 \\
+  		27 - 2p \\
+  		0
+  	}
+  \end{align}
+  We are given that $\vec{A} \times \vec{B} = \vec{0} = \myvec{0 \\ 0 \\ 0}$:
+  \begin{align}
+  	\myvec{
+  		6p - 81 \\
+  		27 - 2p \\
+  		0
+  	} = \myvec{0 \\ 0 \\ 0}
+  \end{align}
+  Equating the respective non-zero components:
+  \begin{align}
+  	6p - 81 = 0 &\implies 6p = 81 \implies p = \frac{27}{2} \\
+  	27 - 2p = 0 &\implies 2p = 27 \implies p = \frac{27}{2}
+  \end{align}
+  \begin{align}
+  	p = \frac{27}{2} = 13.5
+  \end{align}
     %==============================Q9====================================================
     \item Write the direction cosines of a line equally inclined to the three coordinate axes.
     \solution
@@ -248,43 +201,6 @@
     	\implies \norm{\vec{x}} &= 9
     \end{align}
     
-    %===========================Q11===========
-    \item The length $x$ of a rectangle is decreasing at the rate of $5 \text{ cm/minute}$ and the width $y$ is increasing at the rate of $4 \text{ cm/minute}$. When $x = 8 \text{ cm}$ and $y = 6 \text{ cm}$, find the rate of change of:
-    (a) the perimeter,
-    (b) the area of the rectangle.\\
-    \solution \\
-      The rate of change of length and width as:
-     \begin{align}
-     	\frac{dx}{dt} = -5\text{ cm/min}, \quad \frac{dy}{dt} = 4\text{ cm/min}
-     \end{align}
-     where $x = 8\text{ cm}$ and $y = 6\text{ cm}$, Perimeter of the rectangle 
-    \begin{align}
-    	P = 2\brak{x + y} = 2x + 2y
-    \end{align}
-    Differentiating 
-    \begin{align}
-    	\frac{dP}{dt} &= 2\frac{dx}{dt} + 2\frac{dy}{dt}
-    	\\
-    	&= 2\brak{-5} + 2\brak{4}
-    	\\
-    	&= -10 + 8 = -2\text{ cm/min}
-    \end{align}
-    Area of the rectangle
-    \begin{align}
-    	A = xy
-    \end{align}
-    Differentiating
-    \begin{align}
-    	\frac{dA}{dt} = x\frac{dy}{dt} + y\frac{dx}{dt}
-    \end{align}
-     $x = 8\text{ cm}$, $y = 6\text{ cm}$, $\frac{dx}{dt} = -5\text{ cm/min}$, and $\frac{dy}{dt} = 4\text{ cm/min}$:
-    \begin{align}
-    	\frac{dA}{dt} &= 8\brak{4} + 6\brak{-5}
-    	\\
-    	&= 32 - 30 = 2\text{ cm}^2\text{/min}
-    \end{align}
-   
-    
     %====================Q12=====================
   \item Find the intervals in which the function $f$ given by $f(x) = \sin x + \cos x, \; 0 \le x \le 2\pi$ is strictly increasing or strictly decreasing.\\
   \solution
@@ -316,12 +232,12 @@
   $f\brak{x}$ is strictly increasing on $\brak{0, \frac{\pi}{4}} \cup \brak{\frac{5\pi}{4}, 2\pi}$ and strictly decreasing on $\brak{\frac{\pi}{4}, \frac{5\pi}{4}}$.
   \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
   	\centering
-  	\includegraphics[width=0.6\textwidth]{figs/q11}
+  	\includegraphics[width=0.5\textwidth]{figs/q8}
   	\caption{Function Representation}
   	\label{Function}
-  \end{figure}
+  \end{figure} \newpage
   \begin{lstlisting}
-  	/codes/q11.py
+  	/codes/q8.py
   \end{lstlisting}
   %=====================Q13================
   \item If $\sin y = x \sin\brak{a + y}$, prove that: $$\frac{dy}{dx} = \frac{\sin^2\brak{a + y}}{\sin a}$$
@@ -412,54 +328,6 @@
    	\\
    	&= \frac{y \tan x + \ln\brak{\sin y}}{\ln\brak{\cos x} - x \cot y}
    \end{align}
-  %==================Q15=====================
-  \item 
-    Evaluate:
-    $$\int x \sin^{-1} x \, dx$$
-    \solution
-    Let $x = \sin t \implies dx = \cos t \, dt$ and $t = \sin^{-1} x$:
-    \begin{align}
-    	I\brak{t} &= \int \brak{\sin t} \cdot t \cdot \brak{\cos t \, dt}
-    	\\
-    	&= \int t \brak{\sin t \cos t} dt
-    	\\
-    	&= \frac{1}{2} \int t \sin\brak{2t} \, dt
-    	\label{eq:EE26BTECH11202-time_integral}
-    \end{align}
-    Let $g\brak{t} = t \sin\brak{2t}$. Applying \eqref{laplace_sin}, \eqref{laplace_freq_diff}:
-    \begin{align}
-    	\brak{\sin\brak{2t}} \system{L} \frac{2}{s^2 + 4}
-    	\\
-    	\implies G\brak{s} = \brak{t \sin\brak{2t}} \system{L}  -\frac{d}{ds} \brak{\frac{2}{s^2 + 4}}
-    	\\
-    	&= -\brak{\frac{-2 \cdot 2s}{\brak{s^2 + 4}^2}} = \frac{4s}{\brak{s^2 + 4}^2}
-    	\label{eq:EE26BTECH11202-G_s}
-    \end{align}
-    Applying the integration property \eqref{laplace_integration} to $G\brak{s}$:
-    \begin{align}
-    	H\brak{s} = \brak{\int_0^t \tau \sin\brak{2\tau} d\tau} \system{L} \frac{G\brak{s}}{s}
-    	\\
-    	&= \frac{1}{s} \cdot \frac{4s}{\brak{s^2 + 4}^2} = \frac{4}{\brak{s^2 + 4}^2}
-    	\label{eq:EE26BTECH11202-H_s}
-    \end{align}
-    Using the transform pair \eqref{laplace_inv_pair} 
-    \begin{align}
-    	\mathcal{L}^{-1}\brak{\frac{2\brak{2}^3}{\brak{s^2 + 2^2}^2}} = \mathcal{L}^{-1}\brak{\frac{16}{\brak{s^2 + 4}^2}} = \sin\brak{2t} - 2t \cos\brak{2t}
-    \end{align}
-    Dividing by $4$ yields the inverse transform of $H\brak{s}$ from \eqref{eq:EE26BTECH11202-H_s}:
-    \begin{align}
-    	\int_0^t \tau \sin\brak{2\tau} d\tau = \mathcal{L}^{-1}\brak{\frac{4}{\brak{s^2 + 4}^2}} = \frac{\sin\brak{2t} - 2t \cos\brak{2t}}{4}
-    \end{align}
-    	From \eqref{euler_met}
-    \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
-    	\centering
-    	\includegraphics[width=0.6\textwidth]{figs/q14}
-    	\caption{Euler method vs Exact solution}
-    	\label{euler_fig3}
-    \end{figure} \newpage
-    \begin{lstlisting}
-    	/codes/q14.py
-    \end{lstlisting}
   %======================Q16=======
   \item   Prove that:
   $$\cot^{-1}\brak{ \frac{\sqrt{1 + \sin x} + \sqrt{1 - \sin x}}{\sqrt{1 + \sin x} - \sqrt{1 - \sin x}} } = \frac{x}{2}, \quad x \in 0, \brak{\frac{\pi}{4}})$$
@@ -600,12 +468,12 @@
  \end{align}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q17}
+ 	\includegraphics[width=0.6\textwidth]{figs/q13}
  	\caption{Graph}
  	\label{graph_rep}
- \end{figure} \newpage
+ \end{figure} 
  \begin{lstlisting}
- 	/codes/q17.py
+ 	/codes/q13.py
  \end{lstlisting}
  
   %===================Q19================
@@ -641,7 +509,7 @@
   	&= \frac{11}{243}
   \end{align}
   \begin{lstlisting}
-  	\codes\q18.py
+  	\codes\q14.py
   	\end{lstlisting}
   %====================Q20===================
  \item Using properties of determinants, prove the following:
@@ -712,49 +580,68 @@
  	From \eqref{euler_met}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q20}
+ 	\includegraphics[width=0.6\textwidth]{figs/q16}
  	\caption{Euler's vs Exact }
  	\label{euler_fig4}
  \end{figure} 
  \begin{lstlisting}
- 	/codes/q20.py
+ 	/codes/q16.py
  \end{lstlisting}
  
  %=====================Q22================
  \item Solve the following differential equation:
  $$\cos^2 x \frac{dy}{dx} + y = \tan x$$
  \solution
+ \solution
+ Let $t = \tan x$. Differentiating $t$ with respect to $x$:
  \begin{align}
  	t = \tan x \implies \frac{dt}{dx} = \sec^2 x
  \end{align}
  \begin{align}
- 	\frac{dy}{dx} = \frac{dy}{dt} \frac{dt}{dx} = \sec^2 x \frac{dy}{dt}
- 	\label{eq:EE26BTECH11202-chain_rule}
+ 	\frac{dy}{dx} = \frac{dy}{dt} \frac{dt}{dx} = \sec^2 x \frac{dy}{dt} \label{eq:EE26BTECH11202-chain_rule}
  \end{align}
- Substituting \eqref{eq:EE26BTECH11202-chain_rule} into $\cos^2 x \frac{dy}{dx} + y = \tan x$:
  \begin{align}
- 	\cos^2 x \brak{\sec^2 x \frac{dy}{dt}} + y = t \implies \frac{dy}{dt} + y = t
- 	\label{eq:EE26BTECH11202-lti_system}
+ 	\cos^2 x \brak{\sec^2 x \frac{dy}{dt}} + y = t \implies \frac{dy}{dt} + y = t \label{eq:EE26BTECH11202-lti_system}
  \end{align}
+ 
+ The unit step function $u(t)$ defined as:
+ \begin{align}
+ 	u(t) = \begin{cases}
+ 		1 & t > 0 \\
+ 		0 & t < 0
+ 	\end{cases} \label{eq:unit_step}
+ \end{align}
+ Multiplying the differential equation \eqref{eq:EE26BTECH11202-lti_system} by $u(t)$:
+ \begin{align}
+ 	\frac{dy(t)}{dt} u(t) + y(t) u(t) = t u(t) \label{eq:causal_de}
+ \end{align}
+ Taking the Laplace transform of both sides:
  \begin{align}
  	s Y(s) - y(0^-) + Y(s) = \frac{1}{s^2}
  \end{align}
  Solving for $Y(s)$:
  \begin{align}
- 	(s + 1) Y(s) &= \frac{1}{s^2} + y(0^-)
- 	\\
- 	Y(s) &= \frac{1}{s^2(s + 1)} + \frac{y(0^-)}{s + 1}
- 	\label{eq:EE26BTECH11202-laplace_domain}
+ 	(s + 1) Y(s) &= \frac{1}{s^2} + y(0^-) \\
+ 	Y(s) &= \frac{1}{s^2(s + 1)} + \frac{y(0^-)}{s + 1} \label{eq:EE26BTECH11202-laplace_domain}
  \end{align}
  \begin{align}
  	\frac{1}{s^2(s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C_0}{s + 1}
  \end{align}
- Solving coefficients: $B = 1$, $C_0 = 1$, $A = -1$:
+ Solving for the coefficients gives $B = 1$, $C_0 = 1$, and $A = -1$:
  \begin{align}
- 	Y(s) = \frac{1}{s^2} - \frac{1}{s} + \frac{1}{s + 1} + \frac{y(0^-)}{s + 1}
+ 	\frac{1}{s^2(s + 1)} = -\frac{1}{s} + \frac{1}{s^2} + \frac{1}{s + 1}
  \end{align}
  \begin{align}
- 	y(t) = t - 1 + \brak{1 + y(0^-)} e^{-t} = t - 1 + C e^{-t}
+ 	Y(s) = \frac{1}{s^2} - \frac{1}{s} + \frac{1}{s + 1} + \frac{y(0^-)}{s + 1} = \frac{1}{s^2} - \frac{1}{s} + \frac{1 + y(0^-)}{s + 1}
+ \end{align}
+ 
+ Taking the inverse Laplace transform:From \eqref{lap_1}
+ \begin{align}
+ 	y(t) u(t) = \brak{t - 1 + \brak{1 + y(0^-)} e^{-t}} u(t)
+ \end{align}
+ Setting $C = 1 + y(0^-)$ as an arbitrary constant, the solution for $t > 0$ is:
+ \begin{align}
+ 	y(t) = t - 1 + C e^{-t}
  \end{align}
  Substituting back $t = \tan x$:
  \begin{align}
@@ -763,12 +650,12 @@
  	From \eqref{euler_met}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q21}
+ 	\includegraphics[width=0.6\textwidth]{figs/q17}
  	\caption{Euler's vs Exact }
  	\label{euler_fig5}
  \end{figure} 
  \begin{lstlisting}
- 	/codes/q21.py
+ 	/codes/q17.py
  \end{lstlisting}
  
  %===============Q23===============
@@ -802,12 +689,12 @@
   \end{align}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q22}
+ 	\includegraphics[width=0.6\textwidth]{figs/q18}
  	\caption{Graphical Representation}
  	\label{vec_per}
- \end{figure} 
+ \end{figure} \newpage
  \begin{lstlisting}
- 	/codes/q22.py
+ 	/codes/q18.py
  \end{lstlisting}
  
  %================Q24==================
@@ -828,9 +715,9 @@
  	\vec{a}_2 - \vec{a}_1 &= \myvec{2 - 1 \\ -1 - 2 \\ -1 - 1} = \myvec{1 \\ -3 \\ -2}
  	\label{eq:EE26BTECH11202-disp_vec}
  \end{align}
- Normal vector $\vec{n} = \vec{b}_1 \times \vec{b}_2$
+ Normal vector $\vec{n} = \vec{b}_1 \times \vec{b}_2$\\
+ From \eqref{eq:cross} 
  \begin{align}
- 	From \eqref{eq:cross} \\
  \vec{n} &= \myvec{\brak{-1}\brak{2} - \brak{1}\brak{1} \\ \brak{1}\brak{2} - \brak{1}\brak{2} \\ \brak{1}\brak{1} - \brak{-1}\brak{2}}
  	\\
  	&= \myvec{-2 - 1 \\ 2 - 2 \\ 1 + 2} = \myvec{-3 \\ 0 \\ 3}
@@ -856,12 +743,12 @@
  \end{align}
   \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q23}
+ 	\includegraphics[width=0.6\textwidth]{figs/q19}
  	\caption{Graphical Representation}
  	\label{shor_dis}
  \end{figure} \newpage 
  \begin{lstlisting}
- 	/codes/q23.py
+ 	/codes/q19.py
  \end{lstlisting}
  
  %====================Q25============
@@ -954,12 +841,12 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \end{align}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.6\textwidth]{figs/q25}
+ 	\includegraphics[width=0.6\textwidth]{figs/q21}
  	\caption{Graphical Representation}
  	\label{plane_dis}
  \end{figure}  
  \begin{lstlisting}
- 	/codes/q25.py
+ 	/codes/q21.py
  \end{lstlisting}
  
  %========Q27====================
@@ -976,11 +863,8 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \begin{align}
  	 y_1 = -2: & \quad x_1 = \brak{-2}^2 = 4 \implies B\brak{4, -2}
  	\\
- 	 y_2 = 1: & \quad x_2 = \brak{1}^2 = 1 \implies A\brak{1, 1}
- \end{align}
- The area is given by:
- \begin{align}
- 	\text{Area}\brak{\Omega} &= \int_{y=-2}^{y=1} \brak{x_R\brak{y} - x_L\brak{y}} \, dy
+ 	 y_2 = 1: & \quad x_2 = \brak{1}^2 = 1 \implies A\brak{1, 1}\\
+ 	 \text{Area} &= \int_{y=-2}^{y=1} \brak{x_R\brak{y} - x_L\brak{y}} \, dy
  	\\
  	&= \int_{-2}^{1} \brak{2 - y - y^2} \, dy \\
  	 &= \brak{2y - \frac{y^2}{2} - \frac{y^3}{3}}_{-2}^{1}
@@ -990,19 +874,20 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  	&= \brak{2 - \frac{1}{2} - \frac{1}{3}} - \brak{-4 - 2 + \frac{8}{3}}
  	\\
  	&= \brak{\frac{7}{6}} - \brak{-6 + \frac{8}{3}}
- 	\\
+ 	\end{align}
+ 	\begin{align}
  	&= \frac{7}{6} - \brak{-\frac{10}{3}} = \frac{7}{6} + \frac{20}{6} = \frac{27}{6} \\
  	\text{Area}\brak{\Omega} &= \frac{9}{2} \text{ square units}
  \end{align}
  
- 	\begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
+ 	\begin{figure}[H] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
- 	\includegraphics[width=0.5\textwidth]{figs/quad_plot.png}
+ 	\includegraphics[width=0.6\textwidth]{figs/q22.png}
  	\caption{Graph of Intersection }
  	\label{quad_plot.png}
- \end{figure} \newpage
+ \end{figure}
  \begin{lstlisting}
-      /codes/q26.py
+      /codes/q22.py
  \end{lstlisting}
  
  
@@ -1010,53 +895,33 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \item Evaluate:
  $$\int_0^{\pi} \frac{x \sin x}{1 + \cos^2 x} \, dx$$\\
  \solution
- From \eqref{king_prop}
- \begin{align}
- 	I = \int_0^{\pi} \frac{\brak{\pi - x} \sin\brak{\pi - x}}{1 + \cos^2\brak{\pi - x}} \, dx
- 	\label{eq:EE26BTECH11202-reflection_step}
- \end{align}
- \begin{align}
- 	 = \int_0^{\pi} \frac{\brak{\pi - x} \sin x}{1 + \cos^2 x} \, dx
- 	\label{eq:EE26BTECH11202-reflected_integral}
- \end{align}
- \begin{align}
- 	I &= \pi \int_0^{\pi} \frac{\sin x}{1 + \cos^2 x} \, dx - \int_0^{\pi} \frac{x \sin x}{1 + \cos^2 x} \, dx
- \end{align}
- \begin{align}
- 	I &= \pi \int_0^{\pi} \frac{\sin x}{1 + \cos^2 x} \, dx - I
- 	\\
- 	\implies 2I &= \pi \int_0^{\pi} \frac{\sin x}{1 + \cos^2 x} \, dx
- 	\label{eq:EE26BTECH11202-combined_integral}
- \end{align}
- \begin{align}
- 	u = \cos x \implies du = -\sin x \, dx \implies \sin x \, dx = -du 
- 	\end{align}
- 	\begin{align}
- 	\brak{x = 0}:u = \cos 0 = 1 \quad \brak{x = \pi}: u = \cos \pi = -1
- \end{align}
- Substituting $u$ and $du$ 
- \begin{align}
- 	2I &= \pi \int_{1}^{-1} \frac{-du}{1 + u^2}
- 	\\
- 	&= \pi \int_{-1}^{1} \frac{du}{1 + u^2}
- 	\label{eq:EE26BTECH11202-u_integral}
- \end{align}
- From \eqref{king_prop}
- \begin{align}
- 	2I &= 2\pi \int_{0}^{1} \frac{du}{1 + u^2}
- 	\\
- 	\implies I &= \pi \int_{0}^{1} \frac{du}{1 + u^2}
- \end{align}
- From \eqref{eq:intan}
- \begin{align}
- 	I &= \pi \brak{\tan^{-1} u}_0^1
- 	\\
- 	&= \pi \brak{\tan^{-1}\brak{1} - \tan^{-1}\brak{0}}
- \end{align}
- \begin{align}
- 	I = \pi \brak{\frac{\pi}{4} - 0} = \frac{\pi^2}{4}
- \end{align}
- 
+Let $N = 6$ subintervals over $\brak{0, \pi}$. The step size is:
+\begin{align}
+	h = \frac{\pi - 0}{6} = \frac{\pi}{6}
+\end{align}
+The grid nodes are $x_k = k \cdot \frac{\pi}{6}$ for $k = 0, 1, \dots, 6$. Evaluating $f\brak{x_k} = \frac{x_k \sin x_k}{1 + \cos^2 x_k}$:
+\begin{align}
+	\sum_{k=1}^{5} f\brak{x_k} &= \frac{\pi}{21} + \frac{2\sqrt{3}\pi}{15} + \frac{\pi}{2} + \frac{4\sqrt{3}\pi}{15} + \frac{5\pi}{21}
+	\\
+	&= \pi \brak{\frac{2}{7} + \frac{2\sqrt{3}}{5} + \frac{1}{2}} \approx 4.644954
+\end{align}
+From \eqref{eq:trap_formula}
+\begin{align}
+	T_6 &= \frac{\pi/6}{2} \brak{0 + 2 \cdot 4.644954 + 0} = \frac{\pi}{6} \times 4.644954 \approx 2.432092
+\end{align}
+The Difference Equation:
+\begin{align}
+y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
+\end{align}
+\begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
+	\centering
+	\includegraphics[width=0.5\textwidth]{figs/q23.png}
+	\caption{Graph of Intersection }
+	\label{int_plot.png}
+\end{figure}\newpage
+\begin{lstlisting}
+	/codes/q23.py
+\end{lstlisting}
  %============Q29===================
  \item Using matrices, solve the following system of equations:
  \begin{align*} x + y + z &= 6 \\  x + 2z &= 7 \\  3x + y + z &= 12 \end{align*}
@@ -1074,13 +939,18 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \begin{align}
  	\xrightarrow[R_2 \to R_2 + R_3]{R_1 \to R_1 - R_3}\myvec{1 & 1 & 0 & \vline & 4 \\ 0 & 1 & 0 & \vline & 1 \\ 0 & 0 & 1 & \vline & 2}
  	\end{align}
+ 	\begin{align} 
+ 		\xrightarrow{R_1 \to R_1 - R_2} 
+ 		\myvec{1 & 0 & 0 & \vline & 3 \\ 0 & 1 & 0 & \vline & 1 \\ 0 & 0 & 1 & \vline & 2}
+ 	\end{align}
+ 	
  	\begin{align}
  	x= 3,
  	y= 1,
  	z= 2
  	\end{align}
  	\begin{lstlisting}
- 		/codes/q28.py
+ 		/codes/q24.py
  	\end{lstlisting}
  	\begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  		\centering
@@ -1151,7 +1021,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  	&= \frac{1}{6} \times \frac{126}{73} = \frac{21}{73}
  \end{align}
  \begin{lstlisting}
- 	\codes\q30.py
+ 	\codes\q26.py
  	\end{lstlisting}
  
  %==================Q32==============
@@ -1222,77 +1092,9 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  	\includegraphics[width=0.5\textwidth]{figs/q31.png}
  	\caption{Graphical Representation}
  	\label{Graphical Representation.png}
- \end{figure}\newpage
+ \end{figure}
  \begin{lstlisting}
  	/codes/q31.py
  \end{lstlisting}
- %===============Q33=================
- \item If the sum of the lengths of the hypotenuse and a side of a right-angled triangle is given, show that the area of the triangle is maximum when the angle between them is $\frac{\pi}{3}$.\\
- \solution
- \begin{align}
- 	\text{Hypotenuse length} &= h
- 	\\
- 	\text{Base side length} &= x
- 	\\
- 	\text{Perpendicular height} &= y
- 	\\
- 	\text{Angle between base } x \text{ and hypotenuse } h &= \theta
- \end{align}
- \begin{align}
- 	h + x = k \implies h = k - x
- 	\label{eq:EE26BTECH11202-hyp_constraint}
- \end{align}
- \begin{align}
- 	y &= \sqrt{h^2 - x^2} = \sqrt{\brak{k - x}^2 - x^2}
- 	\\
- 	&= \sqrt{k^2 - 2kx + x^2 - x^2} = \sqrt{k^2 - 2kx}
- 	\label{eq:EE26BTECH11202-height_expr}
- \end{align}
- \begin{align}
- 	A\brak{x} = \frac{1}{2} x y = \frac{1}{2} x \sqrt{k^2 - 2kx}
- \end{align}
- To simplify differentiation, define the auxiliary objective function $Z\brak{x} = \brak{A\brak{x}}^2$:
- \begin{align}
- 	Z\brak{x} = \frac{1}{4} x^2 \brak{k^2 - 2kx} = \frac{1}{4} \brak{k^2 x^2 - 2k x^3}
- 	\label{eq:EE26BTECH11202-squared_area}
- \end{align}
- Since $A\brak{x} > 0$, maximizing $Z\brak{x}$ is strictly equivalent to maximizing $A\brak{x}$.
- Differentiating 
- \begin{align}
- 	\frac{dZ}{dx} &= \frac{1}{4} \frac{d}{dx} \brak{k^2 x^2 - 2k x^3}
- 	\\
- 	&= \frac{1}{4} \brak{2k^2 x - 6k x^2} = \frac{1}{2} k x \brak{k - 3x}
- 	\label{eq:EE26BTECH11202-first_derivative}
- \end{align}
- Setting $\frac{dZ}{dx} = 0$ to locate critical points:
- \begin{align}
- 	\frac{1}{2} k x \brak{k - 3x} = 0
- \end{align}
- \begin{align}
- 	k - 3x = 0 \implies x = \frac{k}{3}
- 	\label{eq:EE26BTECH11202-critical_x}
- \end{align}
- Differentiating \eqref{eq:EE26BTECH11202-first_derivative} with respect to $x$:
- \begin{align}
- 	\frac{d^2 Z}{dx^2} = \frac{1}{4} \brak{2k^2 - 12kx}
- \end{align}
- 
- Evaluating at the critical point $x = \frac{k}{3}$:
- \begin{align}
- 	\mydet{\frac{d^2 Z}{dx^2}}_{x = \frac{k}{3}} &= \frac{1}{4} \brak{2k^2 - 12k \brak{\frac{k}{3}}}
- 	\\
- 	&= \frac{1}{4} \brak{2k^2 - 4k^2} = -\frac{k^2}{2} < 0
- \end{align}
- $Z\brak{x}$ (and hence area $A\brak{x}$) achieves a strict local maximum at $x = \frac{k}{3}$.
- \begin{align}
- 	h = k - \frac{k}{3} = \frac{2k}{3}
- \end{align}
- \begin{align}
- 	\cos \theta =\frac{x}{h} = \frac{\frac{k}{3}}{\frac{2k}{3}} = \frac{1}{2}
- \end{align}
- \begin{align}
- \theta = \cos^{-1}\brak{\frac{1}{2}} = \frac{\pi}{3}
- \end{align}
- %===============Q34=============
  
 \end{enumerate}

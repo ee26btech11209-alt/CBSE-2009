@@ -1,47 +1,57 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 1. Vector definitions
-a = np.array([1, 1, 1])
-b = np.array([1, 2, 3])
+# 1. Generate y values for plotting curves continuously along the y-axis
+y = np.linspace(-3.2, 3.2, 500)
 
-# Sum and Difference vectors
-u = a + b  # (2, 3, 4)
-v = a - b  # (0, -1, -2)
+# Equations defined in terms of y:
+# Parabola: x = y^2
+x_parabola = y**2
 
-# 2. Cross product and unit normal vector
-w = np.cross(u, v)  # (-2, 4, -2)
-w_norm = np.linalg.norm(w)
-n_hat = w / w_norm  # Unit normal vector
+# Line: x = 2 - y
+x_line = 2 - y
 
-# 3. 3D Plotting
-fig = plt.figure(figsize=(10, 8), dpi=150)
-ax = fig.add_subplot(111, projection='3d')
-origin = np.array([0, 0, 0])
+# 2. Setup figure canvas
+fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
 
-# Plotting vectors
-ax.quiver(*origin, *u, color='#1F77B4', linewidth=2.5, 
-          label=r'$\vec{a}+\vec{b} = (2, 3, 4)$', arrow_length_ratio=0.08)
-ax.quiver(*origin, *v, color='#2CA02C', linewidth=2.5, 
-          label=r'$\vec{a}-\vec{b} = (0, -1, -2)$', arrow_length_ratio=0.1)
-ax.quiver(*origin, *n_hat, color='#D62728', linewidth=3.0, 
-          label=r'$\hat{n} = \frac{1}{\sqrt{6}}(-1, 2, -1)$', arrow_length_ratio=0.2)
-ax.quiver(*origin, *-n_hat, color='#E377C2', linestyle='--', linewidth=2.0, 
-          label=r'$-\hat{n} = \frac{1}{\sqrt{6}}(1, -2, 1)$', arrow_length_ratio=0.2)
+# Plot the line and parabola
+ax.plot(x_line, y, color='#D9531E', linewidth=2.5, label=r'$x + y = 2$')
+ax.plot(x_parabola, y, color='#1A4D7C', linewidth=2.5, label=r'$y^2 = x$')
 
-# Axis limits & labels
-ax.set_xlim([-2, 3])
-ax.set_ylim([-2, 4])
-ax.set_zlim([-2, 5])
+# 3. Fill the bounded area between y = -2 and y = 1
+y_fill = np.linspace(-2, 1, 500)
+x_fill_parabola = y_fill**2
+x_fill_line = 2 - y_fill
 
-ax.set_xlabel('$X$', fontsize=12, fontweight='bold')
-ax.set_ylabel('$Y$', fontsize=12, fontweight='bold')
-ax.set_zlabel('$Z$', fontsize=12, fontweight='bold')
-ax.set_title(r"3D Vectors: $(\vec{a}+\vec{b})$, $(\vec{a}-\vec{b})$ & Unit Normal $\hat{n}$", 
-             fontsize=14, fontweight='bold', pad=15)
+ax.fill_betweenx(y_fill, x_fill_parabola, x_fill_line, color='#A6C8E0', alpha=0.55)
 
-ax.grid(True, linestyle=':', alpha=0.6)
-ax.legend(loc='upper left', fontsize=10, frameon=True, facecolor='white', framealpha=0.95)
+# 4. Highlight and label intersection points (1, 1) and (4, -2)
+intersections = [(1, 1), (4, -2)]
+for xi, yi in intersections:
+    ax.scatter(xi, yi, color='#87CEFA', edgecolors='#1A4D7C', s=80, zorder=5, linewidth=1.5)
+    
+    # Position text labels clearly around points
+    offset = (-20, 12) if yi > 0 else (12, 10)
+    ax.annotate(f'({xi}, {yi})', (xi, yi), textcoords="offset points", 
+                xytext=offset, fontsize=13, fontweight='bold')
+
+# Inline curve labels
+ax.text(3.1, 1.25, r'$y^2 = x$', fontsize=14, fontweight='bold', color='#111111')
+ax.text(2.6, -0.9, r'$x + y = 2$', fontsize=14, fontweight='bold', color='#111111')
+
+# 5. Axes formatting and grid lines
+ax.axhline(0, color='black', linewidth=1.2)
+ax.axvline(0, color='black', linewidth=1.2)
+
+ax.set_xlim(-1, 5.2)
+ax.set_ylim(-3.2, 3.2)
+
+ax.grid(True, which='both', linestyle='-', linewidth=0.8, color='#D0D0D0')
+ax.set_title(r'Graph of the Region Bounded by $y^2 = x$ and $x + y = 2$', fontsize=15, fontweight='bold', pad=15)
+
+# Axis labels with arrows styling
+ax.set_xlabel('x-axis', fontsize=12, fontweight='bold', loc='right')
+ax.set_ylabel('y-axis', fontsize=12, fontweight='bold', loc='top')
 
 plt.tight_layout()
 plt.show()
