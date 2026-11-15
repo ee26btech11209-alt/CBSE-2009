@@ -1,6 +1,6 @@
 \begin{enumerate}[label=\thesubsection.\arabic*, ref=\thesubsection.\theenumi]
 	%---------------------Q1-----------------
-	\item Find the value of $x$ ,if $\myvec{3x+y & -y \\
+	\item value of $x$ ,if $\myvec{3x+y & -y \\
 										2y-x  & 3}    = \myvec{1 & 2 \\
 										                       -5 & 3  }$\\
     \solution 
@@ -235,7 +235,7 @@
   	\includegraphics[width=0.5\textwidth]{figs/q8}
   	\caption{Function Representation}
   	\label{Function}
-  \end{figure} \newpage
+  \end{figure} 
   \begin{lstlisting}
   	/codes/q8.py
   \end{lstlisting}
@@ -661,9 +661,12 @@
  %===============Q23===============
  \item Find a unit vector perpendicular to each of the vectors $\vec{a} + \vec{b}$ and $\vec{a} - \vec{b}$, where $\vec{a} = \vec{e}_1 +\vec{e}_2 + \vec{e}_3$ and ${\vec{b} = \vec{e}_1 + 2\vec{e}_2 + 3\vec{e}_3}$.\\
  \solution
- $\vec{v} = \vec{a} - \vec{b}$
  \begin{align}
- 	\vec{v} &= \brak{1 - 1}\vec{e}_1 + \brak{1 - 2}\vec{e}_2 + \brak{1 - 3}\vec{e}_3
+ 	\vec{v} &= \vec{a} + \vec{b} = \myvec{1 \\ 1 \\ 1} + \myvec{1 \\ 2 \\ 3} = \myvec{2 \\ 3 \\ 4} = 2\vec{e}_1 + 3\vec{e}_2 + 4\vec{e}_3 \label{eq:vec_A} \\
+ 	\end{align}
+ \begin{align}
+ 	 \vec{v} = \vec{a} - \vec{b} &=
+ 	  \brak{1 - 1}\vec{e}_1 + \brak{1 - 2}\vec{e}_2 + \brak{1 - 3}\vec{e}_3
  	\\
  	&= 0\vec{e}_1 - \vec{e}_2 - 2\vec{e}_3 = \myvec{0 \\ -1 \\ -2}
  \end{align}
@@ -680,10 +683,10 @@
  	\\
  	&= \sqrt{4 + 16 + 4} = \sqrt{24} = 2\sqrt{6}
  \end{align}
-  \begin{align}
   From \eqref{unit_vector}
+  \begin{align}
   	\\
-  	&= \pm \frac{-2\vec{e}_1 + 4\vec{e}_2 - 2\vec{e}_3}{2\sqrt{6}}
+  	\hat{w} &= \pm \frac{-2\vec{e}_1 + 4\vec{e}_2 - 2\vec{e}_3}{2\sqrt{6}}
   	\\
   	&= \pm \frac{1}{\sqrt{6}}\brak{-\vec{e}_1 + 2\vec{e}_2 - \vec{e}_3}
   \end{align}
@@ -692,7 +695,7 @@
  	\includegraphics[width=0.6\textwidth]{figs/q18}
  	\caption{Graphical Representation}
  	\label{vec_per}
- \end{figure} \newpage
+ \end{figure} 
  \begin{lstlisting}
  	/codes/q18.py
  \end{lstlisting}
@@ -746,7 +749,7 @@
  	\includegraphics[width=0.6\textwidth]{figs/q19}
  	\caption{Graphical Representation}
  	\label{shor_dis}
- \end{figure} \newpage 
+ \end{figure}  
  \begin{lstlisting}
  	/codes/q19.py
  \end{lstlisting}
@@ -783,16 +786,8 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
 \begin{align}
 	\lambda + 6 = \sqrt{\lambda^2 + 4\lambda + 44}
 \end{align}
-\begin{align}
-	\brak{\lambda + 6}^2 &= \lambda^2 + 4\lambda + 44
-	\\
-	\lambda^2 + 12\lambda + 36 &= \lambda^2 + 4\lambda + 44
-\end{align}
-\begin{align}
-	12\lambda - 4\lambda &= 44 - 36
-	\\
-	8\lambda &= 8 \implies \lambda = 1
-\end{align}
+Solving we get $\lambda$=1
+
  %=================Q26==================
  \item Find the equation of the plane determined by the points $A\brak{3, -1, 2}$, $B\brak{5, 2, 4}$ and $C\brak{-1, -1, 6}$. Also find the distance of the point $P\brak{6, 5, 9}$ from the plane.
  \solution
@@ -813,7 +808,7 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  \begin{align}
  	\vec{n} &= \myvec{3\brak{4} - 2\brak{0} \\ 2\brak{-4} - 2\brak{4} \\ 2\brak{0} - 3\brak{-4}} = \myvec{12 \\ -8 - 8 \\ 12} = \myvec{12 \\ -16 \\ 12}
  \end{align}
- Scaling down by the common factor of $4$ yields an equivalent direction normal vector $\vec{n}_0$:
+ Direction normal vector $\vec{n}_0$:
  \begin{align}
  	\vec{n}_0 = \myvec{3 \\ -4 \\ 3}
  	\label{eq:EE26BTECH11202-normal_reduced}
@@ -852,34 +847,34 @@ Evaluating the numerator $\vec{x}^T \vec{w}$ using matrix transposition:
  %========Q27====================
  \item Find the area of the region included between the parabola $y^2 = x$ and the line $x + y = 2$.\\
  \solution
- Equating the $x$-coordinates
- \begin{align}
- 	y^2 = 2 - y \implies y^2 + y - 2 = 0
- \end{align}
- \begin{align}
- 	\brak{y + 2}\brak{y - 1} = 0 \implies y_1 = -2, \quad y_2 = 1
- \end{align}
- Substituting the roots
- \begin{align}
- 	 y_1 = -2: & \quad x_1 = \brak{-2}^2 = 4 \implies B\brak{4, -2}
- 	\\
- 	 y_2 = 1: & \quad x_2 = \brak{1}^2 = 1 \implies A\brak{1, 1}\\
- 	 \text{Area} &= \int_{y=-2}^{y=1} \brak{x_R\brak{y} - x_L\brak{y}} \, dy
- 	\\
- 	&= \int_{-2}^{1} \brak{2 - y - y^2} \, dy \\
- 	 &= \brak{2y - \frac{y^2}{2} - \frac{y^3}{3}}_{-2}^{1}
- 	\\
- 	&= \brak{2\brak{1} - \frac{1^2}{2} - \frac{1^3}{3}} - \brak{2\brak{-2} - \frac{\brak{-2}^2}{2} - \frac{\brak{-2}^3}{3}}
- 	\\
- 	&= \brak{2 - \frac{1}{2} - \frac{1}{3}} - \brak{-4 - 2 + \frac{8}{3}}
- 	\\
- 	&= \brak{\frac{7}{6}} - \brak{-6 + \frac{8}{3}}
- 	\end{align}
+ 	$y^2=x$ can be Represented as \eqref{conic}
  	\begin{align}
- 	&= \frac{7}{6} - \brak{-\frac{10}{3}} = \frac{7}{6} + \frac{20}{6} = \frac{27}{6} \\
- 	\text{Area}\brak{\Omega} &= \frac{9}{2} \text{ square units}
+ 	\vec{V} = \myvec{ 0 & 0 \\ 0 & 1 }, \qquad
+ 	\vec{u} = \myvec{ -\frac{1}{2} \\ 0 }, \qquad
+ 	f = 0
+ 	\end{align}
+ 	Line ($x + y = 2$)
+ 	 \begin{align}
+ 	 	\vec{x} = \vec{h} + \kappa\vec{m} = \myvec {2 \\ 0 } + \kappa\myvec {1 \\ -1 }, \qquad \kappa \in \vec{R}
  \end{align}
- 
+ \begin{align}
+ 	\vec{m}^\top\vec{V}\vec{m} &= \myvec{1 & -1} \myvec{ 0 & 0 \\ 0 & 1}\myvec{1 \\ -1} = 1 \\
+ 	\vec{V}\vec{h} + \vec{u} &= \myvec{0 & 0 \\ 0 & 1 }\myvec{ 2 \\ 0 } + \myvec{ -\frac{1}{2} \\ 0 } = \myvec{-\frac{1}{2} \\ 0 } \\
+	\vec{m}^\top(\vec{V}\vec{h} + \vec{u}) &= \myvec {1 & -1}\myvec{ -\frac{1}{2} \\ 0 } =-\frac{1}{2} 
+\end{align}
+From \eqref{k}
+	\begin{align}
+		\kappa_i &= \frac{1}{1}\brak{\frac{1}{2} \pm \sqrt{\frac{1}{4} - (-2)(1)}} = \frac{1}{2} \pm \sqrt{\frac{9}{4}} = \frac{1}{2} \pm \frac{3}{2}
+	\end{align}
+ 	\begin{align}
+ 		\vec{x}_1 = \myvec{ 2 \\ 0 } + 2\myvec{1 \\ -1 }= \myvec{4 \\ -2 }, \qquad \vec{x}_2 = \myvec{ 2 \\ 0} - 1\myvec {1 \\ -1} = \myvec {1 \\ 1 }
+ 		\end{align}
+ 		\begin{align}
+ 		Area =\int_{-2}^{1} \brak{2 - y - y^2} dy \\
+ 			= \brak{2y - \frac{y^2}{2} - \frac{y^3}{3}}_{-2}^{1} 
+ 			=\frac{9}{2}
+ 			\end{align}
+
  	\begin{figure}[H] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
  	\includegraphics[width=0.6\textwidth]{figs/q22.png}
@@ -918,7 +913,7 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
 	\includegraphics[width=0.5\textwidth]{figs/q23.png}
 	\caption{Graph of Intersection }
 	\label{int_plot.png}
-\end{figure}\newpage
+\end{figure}
 \begin{lstlisting}
 	/codes/q23.py
 \end{lstlisting}
@@ -989,36 +984,49 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
  \item Coloured balls are distributed in three bags as shown in the following table:$$\begin{array}{|c|c|c|} \hline \text{Bag} & \text{Black balls} & \text{Red balls} \\ \hline \text{I} & 1 & 3 \\ \text{II} & 2 & 1 \\ \text{III} & 4 & 3 \\ \hline \end{array}$$
  A bag is selected at random and then two balls are randomly drawn from the selected bag. They happen to be black and red. What is the probability that they came from bag I?\\
  \solution
- $E_1$, $E_2$, and $E_3$ denote the mutually exclusive and exhaustive events.$A$ denote the observed outcome event: \textit{"Drawing 1 Black ball and 1 Red ball"}.
+ Let $X \in \brak{1, 2, 3}$ be the discrete random variable denoting the selected bag, where $\brak{X = k}$ corresponds to the event $E_k$, and let $B \in \brak{0, 1, 2}$ denote the number of black balls drawn when two balls are drawn at random without replacement.
+ 
+ Since a bag is selected at random, the prior PMF of $X$ is
  \begin{align}
- 	P\brak{E_1} = P\brak{E_2} = P\brak{E_3} = \frac{1}{3}
+ 	p_X\brak{k} = \pr{X = k} = \pr{E_k} = \frac{1}{3}, \quad k \in \brak{1, 2, 3}
+ 	\label{eq:prior-pmf}
  \end{align}
- For Bag I ($E_1$):
+ 
+ Given $X = k$. The conditional PMF $p_{B \mid X}\brak{1 \mid k} = \pr{B = 1 \mid X = k} = \pr{A \mid E_k}$ for each bag is, \quad From \eqref{bayer}
  \begin{align}
- 	P\brak{A \mid E_1} = \frac{\binom{1}{1} \binom{3}{1}}{\binom{4}{2}} = \frac{1 \times 3}{6} = \frac{3}{6} = \frac{1}{2}
- \end{align}
- For Bag II ($E_2$):
- \begin{align}
- 	P\brak{A \mid E_2} = \frac{\binom{2}{1} \binom{1}{1}}{\binom{3}{2}} = \frac{2 \times 1}{3} = \frac{2}{3}
- \end{align}
- For Bag III ($E_3$):
- \begin{align}
- 	P\brak{A \mid E_3} = \frac{\binom{4}{1} \binom{3}{1}}{\binom{7}{2}} = \frac{4 \times 3}{21} = \frac{12}{21} = \frac{4}{7}
- \end{align}
- From \eqref{tot_prop}
- \begin{align}
- 	P\brak{A} &= \frac{1}{3} \brak{\frac{1}{2}} + \frac{1}{3} \brak{\frac{2}{3}} + \frac{1}{3} \brak{\frac{4}{7}}
+ 	p_{B \mid X}\brak{1 \mid 1} &= \frac{\binom{1}{1}\binom{3}{1}}{\binom{4}{2}} = \frac{1 \times 3}{6} = \frac{1}{2}
  	\\
- 	&= \frac{1}{3} \brak{\frac{1}{2} + \frac{2}{3} + \frac{4}{7}}
- \end{align}
- \begin{align}
- 	P\brak{A} = \frac{1}{3} \times \frac{73}{42} = \frac{73}{126}
- \end{align}
- From \eqref{bayer}
- \begin{align}
- 	P\brak{E_1 \mid A}	&= \frac{\frac{1}{3} \times \frac{1}{2}}{\frac{73}{126}} = \frac{\frac{1}{6}}{\frac{73}{126}}
+ 	p_{B \mid X}\brak{1 \mid 2} &= \frac{\binom{2}{1}\binom{1}{1}}{\binom{3}{2}} = \frac{2 \times 1}{3} = \frac{2}{3}
  	\\
- 	&= \frac{1}{6} \times \frac{126}{73} = \frac{21}{73}
+ 	p_{B \mid X}\brak{1 \mid 3} &= \frac{\binom{4}{1}\binom{3}{1}}{\binom{7}{2}} = \frac{4 \times 3}{21} = \frac{4}{7}
+ 	\label{eq:cond-pmf}
+ \end{align}
+ 
+ From \eqref{eq:prior-pmf} and \eqref{eq:cond-pmf}, the joint PMF $p_{X,B}\brak{k, 1} = p_X\brak{k}\,p_{B \mid X}\brak{1 \mid k}$ is
+ \begin{align}
+ 	p_{X,B}\brak{1, 1} &= \frac{1}{3} \times \frac{1}{2} = \frac{1}{6}
+ 	\\
+ 	p_{X,B}\brak{2, 1} &= \frac{1}{3} \times \frac{2}{3} = \frac{2}{9}
+ 	\\
+ 	p_{X,B}\brak{3, 1} &= \frac{1}{3} \times \frac{4}{7} = \frac{4}{21}
+ 	\label{eq:joint-pmf}
+ \end{align}
+ 
+ Summing \eqref{eq:joint-pmf} over $k \in \brak{1, 2, 3}$ gives the marginal PMF $p_B\brak{1} = \pr{A}$:
+ \begin{align}
+ 	p_B\brak{1} &= \sum_{k=1}^{3} p_X\brak{k}\,p_{B \mid X}\brak{1 \mid k}
+ 	\\
+ 	&= \frac{1}{6} + \frac{2}{9} + \frac{4}{21} = \frac{21 + 28 + 24}{126} = \frac{73}{126}
+ 	\label{eq:marginal-pmf}
+ \end{align}
+ 
+ Using Bayes' theorem in PMF form, the probability that the balls came from Bag I is
+ \begin{align}
+ 	p_{X \mid B}\brak{1 \mid 1} &= \pr{X = 1 \mid B = 1} = \pr{E_1 \mid A}
+ 	\\
+ 	&= \frac{p_X\brak{1}\,p_{B \mid X}\brak{1 \mid 1}}{p_B\brak{1}}
+ 	\\
+ 	&= \frac{\frac{1}{6}}{\frac{73}{126}} = \frac{21}{73}
  \end{align}
  \begin{lstlisting}
  	\codes\q26.py
@@ -1046,7 +1054,6 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
  	x + y &\le 20
  	\label{eq:EE26BTECH11202-space_constraint}
  \end{align}
- Since the number of items purchased cannot be negative:
  \begin{align}
  	x \ge 0, \quad y \ge 0
  	\label{eq:EE26BTECH11202-non_negativity}
@@ -1056,18 +1063,6 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
  	\\
  	\text{Line 2 } (L_2): & \quad x + y = 20
  \end{align}
- \begin{align}
- 	\text{For } x = 0: & \quad 2y = 48 \implies y = 24 \implies (0, 24)
- 	\\
- 	\text{For } y = 0: & \quad 3x = 48 \implies x = 16 \implies A(16, 0)
- \end{align}
- 
- Intersections of $L_2$ with Axes:
- \begin{align}
- 	\text{For } x = 0: & \quad y = 20 \implies C(0, 20)
- 	\\
- 	\text{For } y = 0: & \quad x = 20 \implies (20, 0)
- \end{align} 	
  Solving
  \begin{align}
  	\myvec{3 & 2 \\ 1 & 1} \myvec{x \\ y} = \myvec{48 \\ 20}
@@ -1081,12 +1076,7 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
  	8 + y = 20 \implies y = 12 \implies B(8, 12)
  \end{align}
  
- The maximum profit of Rs.~$392$ occurs uniquely at vertex $B(8, 12)$.
- \begin{align}
- 	\text{Total Investment: } & 360(8) + 240(12) = 2880 + 2880 = \text{Rs. } 5760 \quad (\text{100\% capital utilized})
- 	\\
- 	\text{Total Items: } & 8 + 12 = 20 \quad (\text{100\% capacity utilized})
- \end{align}
+ The maximum profit of Rs.~$392$ 
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
  	\includegraphics[width=0.5\textwidth]{figs/q31.png}
@@ -1094,7 +1084,9 @@ y_{k+1} - y_k = \frac{h}{2} \brak{f\brak{x_k} + f\brak{x_{k+1}}}, \quad y_0 = 0
  	\label{Graphical Representation.png}
  \end{figure}
  \begin{lstlisting}
- 	/codes/q31.py
+ 	/codes/q27.py
  \end{lstlisting}
- 
+ \begin{lstlisting}
+ 	/codes/q27.c
+ \end{lstlisting}
 \end{enumerate}
