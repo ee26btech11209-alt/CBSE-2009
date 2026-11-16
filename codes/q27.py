@@ -1,66 +1,86 @@
+import cvxpy as cp
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 1. Define x domain
-x = np.linspace(0, 25, 500)
+# 1. Define Problem Parameters in Matrix-Vector Form
+# x[0] = number of fans, x[1] = number of sewing machines
+c = np.array([22, 18])
+A = np.array([
+    [360, 240],  # Investment constraint: 360*x1 + 240*x2 <= 5760
+    [1, 1]       # Space constraint:      x1 + x2 <= 20
+])
+b = np.array([5760, 20])
 
-# 2. Constraint line equations defined in terms of x
-# Line 1: x + y = 20  => y = 20 - x
-y1 = 20 - x
+# 2. Formulate and Solve LPP using CVXPY
+x = cp.Variable(2, nonneg=True)
+objective = cp.Maximize(c @ x)
+constraints = [A @ x <= b]
 
-# Line 2: 360x + 240y = 5760 => 3x + 2y = 48 => y = (48 - 3x) / 2
-y2 = (48 - 3*x) / 2.0
+problem = cp.Problem(objective, constraints)
+problem.solve()
 
-# 3. Setup figure and axes
-fig, ax = plt.subplots(figsize=(10, 7), dpi=150)
+# Extract optimal values
+x_opt = np.round(x.value, 4)
+max_profit = round(problem.value, 4)
 
-# Plot boundary lines
-ax.plot(x, y1, color='#1F77B4', linewidth=2.5, label=r'$x + y = 20$ (Storage constraint)')
-ax.plot(x, y2, color='#D9531E', linewidth=2.5, label=r'$3x + y = 24$ / $3x + 2y = 48$ (Investment constraint)')
+print("Status:", problem.status)
+print(f"Optimal number of fans (x1)            = {int(round(x_opt[0]))}")
+print(f"Optimal number of sewing machines (x2) = {int(round(x_opt[1]))}")
+print(f"Maximum Profit (Z)                     = Rs. {max_profit:.2f}")
 
-# 4. Fill the feasible region bounded by non-negativity (x >= 0, y >= 0)
-y_feasible = np.minimum(np.maximum(0, y1), np.maximum(0, y2))
-ax.fill_between(x, 0, y_feasible, where=(x <= 16), color='#A6C8E0', alpha=0.5, label='Feasible Region')
+# 3. Graphical Solution Plot
+x1 = np.linspace(0, 22, 400)
+x2_inv = (5760 - 360 * x1) / 240  # 360*x1 + 240*x2 = 5760
+x2_spc = 20 - x1                  # x1 + x2 = 20
 
-# 5. Corner points of the feasible polygon
-corner_points = [(0, 0), (16, 0), (8, 12), (0, 20)]
+plt.figure(figsize=(8, 6), dpi=150)
 
-for point in corner_points:
-    px, py = point
-    ax.scatter(px, py, color='#D62728', s=90, zorder=5, edgecolor='black', linewidth=1.2)
-    
-    # Custom text placement for each vertex
-    if point == (8, 12):
-        label_text = f'B({px}, {py})\nOptimal Z = Rs. 392'
-        offset = (12, 10)
-    elif point == (16, 0):
-        label_text = f'A({px}, {py})'
-        offset = (-10, 12)
-    elif point == (0, 20):
-        label_text = f'C({px}, {py})'
-        offset = (10, -5)
-    else:
-        label_text = f'O({px}, {py})'
-        offset = (10, 10)
-        
-    ax.annotate(label_text, (px, py), textcoords="offset points", 
-                xytext=offset, fontsize=11, fontweight='bold')
+# Plot constraint boundary lines
+plt.plot(x1, x2_inv, "b-", linewidth=2, label=r"$360x_1 + 240x_2 \leq 5760$ (Investment)")
+plt.plot(x1, x2_spc, "g-", linewidth=2, label=r"$x_1 + x_2 \leq 20$ (Space)")
 
-# 6. Axes formatting and grid setup
-ax.axhline(0, color='black', linewidth=1.2)
-ax.axvline(0, color='black', linewidth=1.2)
+# Shade feasible region
+x2_feasible = np.maximum(0, np.minimum(x2_inv, x2_spc))
+plt.fill_between(x1, 0, x2_feasible, where=(x1 <= 16), color="skyblue", alpha=0.4, label="Feasible Region")
 
-ax.set_xlim(-1, 22)
-ax.set_ylim(-1, 26)
+# Corner points and objective values
+corners = np.array([
+    [0, 0],
+    [16, 0],
+    [8, 12],
+    [0, 20]
+])
+corner_labels = [
+    r"$O(0, 0),\ Z = 0$",
+    r"$A(16, 0),\ Z = 352$",
+    r"$B(8, 12),\ Z_{\max} = 392$",
+    r"$C(0, 20),\ Z = 360$"
+]
+offsets = [(0.4, 0.5), (0.4, 0.5), (0.5, 0.5), (0.5, -1.2)]
 
-ax.grid(True, linestyle='--', alpha=0.6)
+plt.scatter(corners[:, 0], corners[:, 1], color="black", zorder=5, s=45)
+plt.scatter([x_opt[0]], [x_opt[1]], color="red", zorder=6, s=90, label=r"Optimal Point $B(8, 12)$")
 
-# Labels and title
-ax.set_xlabel('Number of Fans ($x$)', fontsize=12, fontweight='bold', labelpad=10)
-ax.set_ylabel('Number of Sewing Machines ($y$)', fontsize=12, fontweight='bold', labelpad=10)
-ax.set_title('Linear Programming Feasible Region & Corner Points', fontsize=14, fontweight='bold', pad=15)
+for (cx, cy), lbl, (dx, dy) in zip(corners, corner_labels, offsets):
+    is_opt = (cx == 8 and cy == 12)
+    plt.text(
+        cx + dx,
+        cy + dy,
+        lbl,
+        fontsize=10,
+        color="red" if is_opt else "black",
+        fontweight="bold" if is_opt else "normal"
+    )
 
-ax.legend(loc='upper right', fontsize=10.5)
-
+plt.xlim(-1, 22)
+plt.ylim(-1, 25)
+plt.xlabel(r"Number of Fans ($x_1$)", fontsize=11)
+plt.ylabel(r"Number of Sewing Machines ($x_2$)", fontsize=11)
+plt.title("Graphical Solution of the Linear Programming Problem", fontsize=12, fontweight="bold")
+plt.axhline(0, color="black", linewidth=1)
+plt.axvline(0, color="black", linewidth=1)
+plt.grid(True, linestyle=":", alpha=0.6)
+plt.legend(loc="upper right", fontsize=9.5)
 plt.tight_layout()
+plt.savefig("lpp_graphical_solution.png", dpi=150)
 plt.show()
