@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.1)  16 NOV 2026 14:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.1)  16 NOV 2026 14:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1592,24 +1592,24 @@ File: figs/q16.png Graphic file (type png)
 Package pdftex.def Info: figs/q16.png  used on input line 589.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
  [18] [19 <./figs/q16.png>]
-<figs/q17.png, id=383, 722.7pt x 433.62pt>
+<figs/q17.png, id=380, 722.7pt x 433.62pt>
 File: figs/q17.png Graphic file (type png)
 <use figs/q17.png>
 Package pdftex.def Info: figs/q17.png  used on input line 658.
 (pdftex.def)             Requested size: 218.5194pt x 131.11255pt.
  [20 <./figs/q17.png>]
-<figs/q18.png, id=402, 722.7pt x 466.8642pt>
+<figs/q18.png, id=400, 722.7pt x 466.8642pt>
 File: figs/q18.png Graphic file (type png)
 <use figs/q18.png>
 Package pdftex.def Info: figs/q18.png  used on input line 700.
-(pdftex.def)             Requested size: 218.5194pt x 141.16452pt.
- [21 <./figs/q18.png>]
-<figs/q19.png, id=423, 722.7pt x 466.8642pt>
+(pdftex.def)             Requested size: 145.67589pt x 94.10492pt.
+ [21 <./figs/q18.png>] [22]
+<figs/q19.png, id=440, 722.7pt x 466.8642pt>
 File: figs/q19.png Graphic file (type png)
 <use figs/q19.png>
 Package pdftex.def Info: figs/q19.png  used on input line 754.
 (pdftex.def)             Requested size: 218.5194pt x 141.16452pt.
- [22] [23 <./figs/q19.png>] [24]
+ [23 <./figs/q19.png>] [24]
 <figs/q21.png, id=476, 925.056pt x 467.8278pt>
 File: figs/q21.png Graphic file (type png)
 <use figs/q21.png>
@@ -1631,19 +1631,19 @@ Package pdftex.def Info: figs/q23.png  used on input line 918.
 <figs/3D_plot.png, id=531, 1413.28pt x 770.88pt>
 File: figs/3D_plot.png Graphic file (type png)
 <use figs/3D_plot.png>
-Package pdftex.def Info: figs/3D_plot.png  used on input line 957.
+Package pdftex.def Info: figs/3D_plot.png  used on input line 954.
 (pdftex.def)             Requested size: 182.09764pt x 99.32394pt.
  [28 <./figs/3D_plot.png>] [29]
 <figs/q26.png, id=565, 578.16pt x 361.35pt>
 File: figs/q26.png Graphic file (type png)
 <use figs/q26.png>
-Package pdftex.def Info: figs/q26.png  used on input line 1037.
+Package pdftex.def Info: figs/q26.png  used on input line 1036.
 (pdftex.def)             Requested size: 182.09764pt x 113.80931pt.
  [30 <./figs/q26.png>]
 <figs/q27.png, id=583, 578.16pt x 433.62pt>
 File: figs/q27.png Graphic file (type png)
 <use figs/q27.png>
-Package pdftex.def Info: figs/q27.png  used on input line 1093.
+Package pdftex.def Info: figs/q27.png  used on input line 1092.
 (pdftex.def)             Requested size: 182.09764pt x 136.57117pt.
  [31]) [32 <./figs/q27.png>] (./main.aux)
  ***********
@@ -1656,11 +1656,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  54801 strings out of 467533
  1310539 string characters out of 5422139
- 1960617 words of memory out of 5000000
+ 1957617 words of memory out of 5000000
  82570 multiletter control sequences out of 15000+600000
  662021 words of font info for 108 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 109i,20n,118p,1194b,2612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,20n,118p,1194b,2611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -1674,7 +1674,7 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (32 pages, 3137950 bytes).
+Output written on main.pdf (32 pages, 3137883 bytes).
 PDF statistics:
  752 PDF objects out of 1000 (max. 8388607)
  638 compressed objects within 7 object streams
