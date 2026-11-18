@@ -1,29 +1,65 @@
 \begin{enumerate}[label=\thesubsection.\arabic*, ref=\thesubsection.\theenumi]
 	%---------------------Q1-----------------
-	\item value of $x$ ,if $\myvec{3x+y & -y \\
+	\item Find value of $x$ ,if $\myvec{3x+y & -y \\
 										2y-x  & 3}    = \myvec{1 & 2 \\
 										                       -5 & 3  }$ \hfill{(12,2009)} \\
-    \solution 
-    Since both Matrices are equal their difference is equal to Null matrix
-    \begin{align}
-    	\myvec{3x+y & -y \\
-    	        2y-x & 3}  - \myvec{1 & 2 \\
-    	                             -5 & 3} =\myvec{0 & 0 \\
-    	                                             0 & 0 } \\
-    	\myvec{3x+y-1 & -y-2 \\
-    	       2y-x+5 &  0} = \myvec{0 & 0 \\
-    	                             0 & 0 } \\
-    	                              \end{align}
-    	                              
-    	Since it's a Null matrix,each element equal's 0
-    	\begin{align}
-    	i.e,        3x+y-1=0,-y-2=0,2y-x+5=0 \\
-    \end{align}
-    solving above eqations we get
-    \begin{align}
-    	x=1 , y=-2
-    \end{align}
 
+	\solution
+	Let the unknown vector be $\vec{x} = \myvec{x \\ y}$.
+	\begin{align}
+		\myvec{3x + y \\ 2y - x} &= \myvec{3 & 1 \\ -1 & 2}\myvec{x \\ y} = \vec{A}\vec{x}
+		\label{eq:col1-form}
+		\\
+		\myvec{-y \\ 3} &= \myvec{0 & -1 \\ 0 & 0}\myvec{x \\ y} + \myvec{0 \\ 3} = \vec{B}\vec{x} + \vec{c}
+		\label{eq:col2-form}
+	\end{align}
+	\begin{align}
+		\vec{A} = \myvec{3 & 1 \\ -1 & 2}, \quad
+		\vec{B} = \myvec{0 & -1 \\ 0 & 0}, \quad
+		\vec{c} = \myvec{0 \\ 3}, \quad
+		\vec{D} = \myvec{1 & 2 \\ -5 & 3}.
+		\label{eq:matrix-defs}
+	\end{align}
+	
+	Substituting \eqref{eq:col1-form}--\eqref{eq:matrix-defs}
+	\begin{align}
+		\myvec{\vec{A}\vec{x} & \vec{B}\vec{x} + \vec{c}} &= \vec{D}
+		\\
+		\implies \myvec{\vec{A}\vec{x} & \vec{B}\vec{x}} + \myvec{\vec{0} & \vec{c}} &= \vec{D}
+		\\
+		\implies \myvec{\vec{A}\vec{x} & \vec{B}\vec{x}} &= \vec{D} - \vec{E}
+		\label{eq:separated-cols}
+	\end{align}
+	where $\vec{E} = \myvec{\vec{0} & \vec{c}} = \myvec{0 & 0 \\ 0 & 3}$. Factoring out the block-diagonal matrix in $\vec{x}$ on the left-hand side of \eqref{eq:separated-cols},
+	\begin{align}
+		\myvec{\vec{A} & \vec{B}} \myvec{\vec{x} & \vec{0} \\ \vec{0} & \vec{x}} &= \vec{D} - \vec{E}.
+		\label{eq:block-diagonal-form}
+	\end{align}
+	\begin{align}
+		\vec{A}\vec{x} &= \brak{\vec{D} - \vec{E}}\vec{e}_1 = \myvec{1 & 2 \\ -5 & 0}\myvec{1 \\ 0} = \myvec{1 \\ -5}
+		\label{eq:sys-part1}
+		\\
+		\vec{B}\vec{x} &= \brak{\vec{D} - \vec{E}}\vec{e}_2 = \myvec{1 & 2 \\ -5 & 0}\myvec{0 \\ 1} = \myvec{2 \\ 0}.
+		\label{eq:sys-part2}
+	\end{align}
+	Stacking \eqref{eq:sys-part1} and \eqref{eq:sys-part2} into a single linear system $\myvec{\vec{A} \\ \vec{B}}\vec{x} = \myvec{\brak{\vec{D} - \vec{E}}\vec{e}_1 \\ \brak{\vec{D} - \vec{E}}\vec{e}_2}$ 
+	\begin{align}
+		\myvec{3 & 1 & 1 \\ -1 & 2 & -5 \\ 0 & -1 & 2 \\ 0 & 0 & 0}
+		&\xrightarrow{R_1 \leftrightarrow -R_2}
+		\myvec{1 & -2 & 5 \\ 3 & 1 & 1 \\ 0 & -1 & 2 \\ 0 & 0 & 0}
+		\\
+		&\xrightarrow{R_2 \to R_2 - 3R_1}
+		\myvec{1 & -2 & 5 \\ 0 & 7 & -14 \\ 0 & -1 & 2 \\ 0 & 0 & 0}
+		\\
+		&\xrightarrow{\substack{R_2 \to \frac{1}{7}R_2 \\ R_3 \to R_3 + R_2}}
+		\myvec{1 & -2 & 5 \\ 0 & 1 & -2 \\ 0 & 0 & 0 \\ 0 & 0 & 0}
+		\\
+		&\xrightarrow{R_1 \to R_1 + 2R_2}
+		\myvec{1 & 0 & 1 \\ 0 & 1 & -2 \\ 0 & 0 & 0 \\ 0 & 0 & 0}.
+	\end{align}
+	\begin{align}
+		\vec{x} = \myvec{x \\ y} = \myvec{1 \\ -2}.
+	\end{align}
    %==========================Q5========================================
    \item Write the principal value of $\cos^{-1}\brak{\cos \frac{7\pi}{6}}$ \hfill{(12,2009)} \\
   \solution 
@@ -40,13 +76,6 @@
   	\begin{lstlisting}
   		/codes/q2.py
   		\end{lstlisting}
-   
-   
-   
-   
-   
-   
-   
    %===========================Q6=================================
    \item Write the value of the following determinant:
    \begin{align*} 
@@ -378,10 +407,9 @@
   \begin{align}
   	\cot^{-1}\brak{\cot\frac{x}{2}} = \frac{x}{2} = \text{RHS}
   \end{align}
-  
-  
-  
-  
+  \begin{lstlisting}
+  	/codes/q11.py
+  \end{lstlisting}
   %=====================Q17========
   \item Solve for $x$:
   $$2 \tan^{-1}\brak{\cos x} = \tan^{-1}2 \brak{\csc x}$$ \hfill{(12,2009)} \\
@@ -418,60 +446,92 @@
   \begin{align}
   	x = n\pi + \frac{\pi}{4}, \quad n \in \mathbb{Z}
   \end{align}
+    \begin{lstlisting}
+  	/codes/q12.py
+  \end{lstlisting}
   %====================Q18============
   \item Find the equation of the tangent to the curve $y = \sqrt{3x - 2}$ which is parallel to the line $4x - 2y + 5 = 0$. \hfill{(12,2009)}\\
   \solution
+  The given curve $y = \sqrt{3x - 2}$ (with $y \ge 0$, $x \ge \frac{2}{3}$) can be squared and expressed as the second-degree conic equation
   \begin{align}
-  	4x - 2y + 5 = 0
+  	y^2 - 3x + 2 = 0, \label{eq:conic-eq}
   \end{align}
-  Expressing in  slope-intercept form $y = m_L x + c$:
+  which in matrix quadratic form is written as
   \begin{align}
-  	2y = 4x + 5 \implies y = 2x + \frac{5}{2}
+  	\vec{x}^{\top}\vec{V}\vec{x} + 2\vec{u}^{\top}\vec{x} + f = 0, \label{eq:conic-matrix}
   \end{align}
-  Slope of the parallel line is:
+  where $\vec{x} = \myvec{x \\ y}$ and the conic parameters are
   \begin{align}
-  	m = m_L = 2
-  	\label{eq:EE26BTECH11202-line_slope}
+  	\vec{V} = \myvec{0 & 0 \\ 0 & 1}, \quad
+  	\vec{u} = \myvec{-\frac{3}{2} \\ 0}, \quad
+  	f = 2. \label{eq:conic-params}
   \end{align}
+  
+  The given line $4x - 2y + 5 = 0$ is expressed in normal form $\vec{n}^{\top}\vec{x} = c$ as
   \begin{align}
-  	y = \sqrt{3x - 2} = \brak{3x - 2}^{1/2}, \quad \text{for } x > \frac{2}{3}
+  	\myvec{2 & -1}\vec{x} = -\frac{5}{2}. \label{eq:line-normal}
   \end{align}
-   The dynamic slope is $\frac{dy}{dx}$:
+  Since the required tangent is parallel to \eqref{eq:line-normal}, it has the same normal vector $\vec{n}$ and direction vector $\vec{m}$ (satisfying $\vec{m}^{\top}\vec{n} = 0$):
   \begin{align}
-  	\frac{dy}{dx} = \frac{1}{2\sqrt{3x - 2}} \cdot \frac{d}{dx}\brak{3x - 2} = \frac{3}{2\sqrt{3x - 2}}
-  	\label{eq:EE26BTECH11202-curve_derivative}
+  	\vec{n} = \myvec{2 \\ -1}, \quad
+  	\vec{m} = \myvec{1 \\ 2}. \label{eq:line-vecs}
   \end{align}
-  Since they are parallel,slopes are equal
+  
+  Let $\vec{q} = \myvec{x_0 \\ y_0}$ be the point of contact on the curve. Substituting the parametric equation of the tangent line
   \begin{align}
-  	\frac{3}{2\sqrt{3x_0 - 2}} = 2
+  	\vec{x} = \vec{q} + \kappa \vec{m} \label{eq:line-param}
   \end{align}
+  into \eqref{eq:conic-matrix} yields
   \begin{align}
-  	4\sqrt{3x_0 - 2} = 3 \implies \sqrt{3x_0 - 2} = \frac{3}{4}
+  	\brak{\vec{q} + \kappa \vec{m}}^{\top}\vec{V}\brak{\vec{q} + \kappa \vec{m}} + 2\vec{u}^{\top}\brak{\vec{q} + \kappa \vec{m}} + f &= 0
+  	\\
+  	\implies \kappa^2\brak{\vec{m}^{\top}\vec{V}\vec{m}} + 2\kappa\,\vec{m}^{\top}\brak{\vec{V}\vec{q} + \vec{u}} + \brak{\vec{q}^{\top}\vec{V}\vec{q} + 2\vec{u}^{\top}\vec{q} + f} &= 0. \label{eq:tangent-quad}
   \end{align}
+  Since $\vec{q}$ lies on \eqref{eq:conic-matrix} ($\vec{q}^{\top}\vec{V}\vec{q} + 2\vec{u}^{\top}\vec{q} + f = 0$) and \eqref{eq:line-param} is tangent at $\vec{q}$ (coincident roots at $\kappa = 0$), the coefficient of $\kappa$ in \eqref{eq:tangent-quad} vanishes:
   \begin{align}
-  	3x_0 - 2 = \frac{9}{16} \implies 3x_0 = 2 + \frac{9}{16} = \frac{41}{16} \implies x_0 = \frac{41}{48}
+  	\vec{m}^{\top}\brak{\vec{V}\vec{q} + \vec{u}} = 0. \label{eq:tangency-cond}
   \end{align}
-  Substituting $x_0 = \frac{41}{48}$ to find $y_0$:
+  From \eqref{eq:conic-params}, computing $\vec{V}\vec{q} + \vec{u}$ gives
   \begin{align}
-  	y_0 = \sqrt{3\brak{\frac{41}{48}} - 2} = \sqrt{\frac{41}{16} - 2} = \sqrt{\frac{9}{16}} = \frac{3}{4}
+  	\vec{V}\vec{q} + \vec{u} = \myvec{0 & 0 \\ 0 & 1}\myvec{x_0 \\ y_0} + \myvec{-\frac{3}{2} \\ 0} = \myvec{-\frac{3}{2} \\ y_0}. \label{eq:grad-eval}
   \end{align}
-  Line Equation:
- \begin{align}
- 	y - \frac{3}{4} = 2\brak{x - \frac{41}{48}}
- \end{align}
- 
- \begin{align}
- 	y - \frac{3}{4} = 2x - \frac{41}{24}
- \end{align}
- \begin{align}
- 	48x - 24y - 23 = 0
- \end{align}
+  Substituting from \eqref{eq:line-vecs} and \eqref{eq:grad-eval} into \eqref{eq:tangency-cond},
+  \begin{align}
+  	\myvec{1 & 2}\myvec{-\frac{3}{2} \\ y_0} &= 0
+  	\\
+  	\implies -\frac{3}{2} + 2y_0 &= 0
+  	\\
+  	\implies y_0 &= \frac{3}{4} \ge 0. \label{eq:y0-val}
+  \end{align}
+  Since $\vec{q}$ satisfies \eqref{eq:conic-eq}, substituting \eqref{eq:y0-val} gives
+  \begin{align}
+  	y_0^2 - 3x_0 + 2 &= 0
+  	\\
+  	\implies \brak{\frac{3}{4}}^2 - 3x_0 + 2 &= 0
+  	\\
+  	\implies x_0 &= \frac{41}{48}.
+  \end{align}
+  Hence, the point of contact is
+  \begin{align}
+  	\vec{q} = \myvec{\frac{41}{48} \\ \frac{3}{4}}. \label{eq:contact-point}
+  \end{align}
+  
+  Using $\vec{n}^{\top}\brak{\vec{x} - \vec{q}} = 0$ with \eqref{eq:line-vecs} and \eqref{eq:contact-point}, the equation of the required tangent is
+  \begin{align}
+  	\myvec{2 & -1}\vec{x} &= \myvec{2 & -1}\myvec{\frac{41}{48} \\ \frac{3}{4}} = \frac{23}{24}
+  	\\
+  	\implies \myvec{48 & -24}\vec{x} &= 23,
+  \end{align}
+  or in Cartesian form,
+  \begin{align}
+  	48x - 24y - 23 = 0.
+  \end{align}
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
  	\includegraphics[width=0.6\textwidth]{figs/q13}
  	\caption{Graph}
  	\label{graph_rep}
- \end{figure} 
+ \end{figure} \newpage 
  \begin{lstlisting}
  	/codes/q13.py
  \end{lstlisting}
@@ -479,35 +539,25 @@
   %===================Q19================
   \item On a multiple choice examination with three possible answers (out of which only one is correct) for each of the five questions, what is the probability that a candidate would get four or more correct answers just by guessing? \hfill{(12,2009)} \\  
   \solution
-  Let the discrete random variable $X$ represent the number of correct answers obtained purely by guessing\\
-  From \eqref{eq:EE26BTECH11202-pmf}
- 
-  The event of getting four or more correct answers is $X \ge 4$:
-  \begin{align}
-  	P\brak{X \ge 4} = P\brak{X = 4} + P\brak{X = 5}
-  	\label{eq:EE26BTECH11202-cumulative}
-  \end{align}
-  \begin{align}
-  	P\brak{X = 4} &= \binom{5}{4} \brak{\frac{1}{3}}^4 \brak{\frac{2}{3}}^{5 - 4}
-  	\\
-  	&= 5 \cdot \frac{1}{81} \cdot \frac{2}{3}
-  	\\
-  	&= \frac{10}{243}
-  	\label{eq:EE26BTECH11202-p4}
-  \end{align}
-  \begin{align}
-  	P\brak{X = 5} &= \binom{5}{5} \brak{\frac{1}{3}}^5 \brak{\frac{2}{3}}^{5 - 5}
-  	\\
-  	&= 1 \cdot \frac{1}{243} \cdot 1
-  	\\
-  	&= \frac{1}{243}
-  	\label{eq:EE26BTECH11202-p5}
-  \end{align}
-  \begin{align}
-  	P\brak{X \ge 4} &= \frac{10}{243} + \frac{1}{243}
-  	\\
-  	&= \frac{11}{243}
-  \end{align}
+Let $X \in \brak{0, 1, 2, 3, 4, 5}$ be the discrete random variable representing the number of correct answers obtained by guessing.
+
+ The probability of guessing a correct answer (success) and an incorrect answer (failure) in each trial are
+\begin{align}
+	p = \frac{1}{3}, \qquad q = 1 - p = \frac{2}{3}
+\end{align}
+The probability mass function (PMF) is given by
+\begin{align}
+	p_X\brak{k} = \Pr\brak{X = k} &= \binom{n}{k} p^k q^{n-k}, \quad k = 0, 1, \dots, n \\
+	&= \binom{5}{k} \brak{\frac{1}{3}}^k \brak{\frac{2}{3}}^{5-k}, \quad k = 0, 1, 2, 3, 4, 5
+\end{align}
+The probability of getting four or more correct answers is
+\begin{align}
+	\Pr\brak{X \ge 4} &= p_X\brak{4} + p_X\brak{5} \\
+	&= \binom{5}{4}\brak{\frac{1}{3}}^4\brak{\frac{2}{3}}^{5-4} + \binom{5}{5}\brak{\frac{1}{3}}^5\brak{\frac{2}{3}}^{5-5} \\
+	&= 5 \cdot \frac{1}{81} \cdot \frac{2}{3} + 1 \cdot \frac{1}{243} \cdot 1 \\
+	&= \frac{10}{243} + \frac{1}{243} \\
+	&= \frac{11}{243}
+\end{align}
    \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
   	\centering
   	\includegraphics[width=0.6\textwidth]{figs/q14}
@@ -707,54 +757,73 @@
  
  %================Q24==================
  \item Find the shortest distance between the lines $\vec{r} = \brak{\vec{e}_1+ 2 \vec{e}_2 +  \vec{e}_3} + \lambda\brak{\vec{e}_1 -  \vec{e}_2 +  \vec{e}_3}$ and $\vec{r} = \brak{2 \vec{e}_1 -  \vec{e}_2-  \vec{e}_3} + \mu\brak{2 \vec{e}_1 +  \vec{e}_2 + 2 \vec{e}_3}$. \hfill{(12,2009)} \\
- \solution
- \begin{align}
- 	L_1: \vec{r}_1 &= \vec{a}_1 + \lambda \vec{b}_1
- 	\\
- 	L_2: \vec{r}_2 &= \vec{a}_2 + \mu \vec{b}_2
- \end{align}
- \begin{align}
- 	\vec{a}_1 &= \myvec{1 \\ 2 \\ 1}, \quad \vec{b}_1 = \myvec{1 \\ -1 \\ 1}
- 	\\
- 	\vec{a}_2 &= \myvec{2 \\ -1 \\ -1}, \quad \vec{b}_2 = \myvec{2 \\ 1 \\ 2}
- \end{align}
- The relative displacement vector $\vec{a}_2 - \vec{a}_1$ connecting the two line reference points is:
- \begin{align}
- 	\vec{a}_2 - \vec{a}_1 &= \myvec{2 - 1 \\ -1 - 2 \\ -1 - 1} = \myvec{1 \\ -3 \\ -2}
- 	\label{eq:EE26BTECH11202-disp_vec}
- \end{align}
- Normal vector $\vec{n} = \vec{b}_1 \times \vec{b}_2$\\
- From \eqref{eq:cross} 
- \begin{align}
- \vec{n} &= \myvec{\brak{-1}\brak{2} - \brak{1}\brak{1} \\ \brak{1}\brak{2} - \brak{1}\brak{2} \\ \brak{1}\brak{1} - \brak{-1}\brak{2}}
- 	\\
- 	&= \myvec{-2 - 1 \\ 2 - 2 \\ 1 + 2} = \myvec{-3 \\ 0 \\ 3}
- 	\label{eq:EE26BTECH11202-normal_vec}
- \end{align}
- \begin{align}
- 	\norm{\vec{n}} &= \sqrt{\brak{-3}^2 + 0^2 + 3^2}
- 	\\
- 	&= \sqrt{9 + 0 + 9} = \sqrt{18} = 3\sqrt{2}
- 	\label{eq:EE26BTECH11202-norm_eval}
- \end{align}
- Evaluating the inner product
- \begin{align}
- 	\brak{\vec{a}_2 - \vec{a}_1}^T \vec{n} &= \myvec{1 & -3 & -2} \myvec{-3 \\ 0 \\ 3}
- 	\\
- 	&= \brak{1}\brak{-3} + \brak{-3}\brak{0} + \brak{-2}\brak{3}
- 	\\
- 	&= -3 + 0 - 6 = -9
- \end{align}
- From \eqref{shortest_distance}
- \begin{align}
- 	d = \frac{\mydet{-9}}{3\sqrt{2}} = \frac{9}{3\sqrt{2}} = \frac{3}{\sqrt{2}} = \frac{3\sqrt{2}}{2}
- \end{align}
+\solution
+The given lines can be expressed in vector form as
+\begin{align}
+	L_1 : \vec{x} &= \vec{A} + \kappa_1 \vec{m}_1 \\
+	L_2 : \vec{x} &= \vec{B} + \kappa_2 \vec{m}_2
+\end{align}
+where $\kappa_1 = \lambda$, $\kappa_2 = \mu$, and
+\begin{align}
+	\vec{A} &= \myvec{1 \\ 2 \\ 1}, \quad \vec{m}_1 = \myvec{1 \\ -1 \\ 1} \\
+	\vec{B} &= \myvec{2 \\ -1 \\ -1}, \quad \vec{m}_2 = \myvec{2 \\ 1 \\ 2}
+\end{align}
+Defining the direction matrix $\vec{M}$ and difference vector $\vec{B} - \vec{A}$,
+\begin{align}
+	\vec{M} = \myvec{\vec{m}_1 & \vec{m}_2} = \myvec{1 & 2 \\ -1 & 1 \\ 1 & 2}, \quad
+	\vec{B} - \vec{A} = \myvec{2 \\ -1 \\ -1} - \myvec{1 \\ 2 \\ 1} = \myvec{1 \\ -3 \\ -2}
+\end{align}
+
+To check whether the given lines are skew, we form the augmented matrix $\myvec{\vec{M} & \vec{B} - \vec{A}}$ and perform row operations:
+\begin{align}
+	\myvec{1 & 2 & 1 \\ -1 & 1 & -3 \\ 1 & 2 & -2}
+	\xrightarrow[R_3 \to R_3 - R_1]{R_2 \to R_2 + R_1 }
+	\myvec{1 & 2 & 1 \\ 0 & 3 & -2 \\ 0 & 0 & -3}
+\end{align}
+Since $\rank\brak{\vec{M} \quad \vec{B} - \vec{A}} = 3$, the lines do not intersect and are skew lines.
+
+Let $\vec{x}_1 = \vec{A} + \kappa_1 \vec{m}_1$ and $\vec{x}_2 = \vec{B} + \kappa_2 \vec{m}_2$ be the points on $L_1$ and $L_2$, respectively, that are closest to each other.\\
+\begin{align}
+	\vec{M}^{\top}\vec{M} &= \myvec{1 & -1 & 1 \\ 2 & 1 & 2}\myvec{1 & 2 \\ -1 & 1 \\ 1 & 2} = \myvec{3 & 3 \\ 3 & 9} \\
+	\vec{M}^{\top}\brak{\vec{B} - \vec{A}} &= \myvec{1 & -1 & 1 \\ 2 & 1 & 2}\myvec{1 \\ -3 \\ -2} = \myvec{2 \\ -5}
+\end{align}
+Substituting into \eqref{eq:least-squares} gives
+\begin{align}
+	\myvec{3 & 3 \\ 3 & 9}\myvec{\kappa_1 \\ -\kappa_2} = \myvec{2 \\ -5}
+\end{align}
+Forming the augmented matrix and reducing to echelon form,
+\begin{align}
+	\myvec{3 & 3 & 2 \\ 3 & 9 & -5}
+	&\xrightarrow{R_2 \to R_2 - R_1}
+	\myvec{3 & 3 & 2 \\ 0 & 6 & -7} \\
+	&\xrightarrow{R_1 \to 2R_1 - R_2}
+	\myvec{6 & 0 & 11 \\ 0 & 6 & -7} \\
+	&\xrightarrow[R_2 \to \frac{R_2}{6}]{R_1 \to \frac{R_1}{6}}
+	\myvec{1 & 0 & \frac{11}{6} \\ 0 & 1 & -\frac{7}{6}}
+\end{align}
+yielding
+\begin{align}
+	\myvec{\kappa_1 \\ -\kappa_2} = \myvec{\frac{11}{6} \\ -\frac{7}{6}} \implies \kappa_1 = \frac{11}{6}, \quad \kappa_2 = \frac{7}{6}
+\end{align}
+
+Substituting $\kappa_1$ and $\kappa_2$ to obtain the closest points $\vec{x}_1$ and $\vec{x}_2$,
+\begin{align}
+	\vec{x}_1 &= \myvec{1 \\ 2 \\ 1} + \frac{11}{6}\myvec{1 \\ -1 \\ 1} = \frac{1}{6}\myvec{17 \\ 1 \\ 17} \\
+	\vec{x}_2 &= \myvec{2 \\ -1 \\ -1} + \frac{7}{6}\myvec{2 \\ 1 \\ 2} = \frac{1}{6}\myvec{26 \\ 1 \\ 8}
+\end{align}
+Hence, the shortest distance between the lines is
+\begin{align}
+	\norm{\vec{x}_1 - \vec{x}_2} &= \norm{\frac{1}{6}\myvec{17 \\ 1 \\ 17} - \frac{1}{6}\myvec{26 \\ 1 \\ 8}} \\
+	&= \norm{\frac{1}{6}\myvec{-9 \\ 0 \\ 9}} \\
+	&= \norm{\frac{3}{2}\myvec{-1 \\ 0 \\ 1}} \\
+	&= \frac{3\sqrt{2}}{2} = \frac{3}{\sqrt{2}}
+\end{align}
   \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
  	\includegraphics[width=0.6\textwidth]{figs/q19}
  	\caption{Graphical Representation}
  	\label{shor_dis}
- \end{figure}  
+ \end{figure} \newpage  
  \begin{lstlisting}
  	/codes/q19.py
  \end{lstlisting}
@@ -796,55 +865,52 @@ Solving we get $\lambda$=1
  %=================Q26==================
  \item Find the equation of the plane determined by the points $A\brak{3, -1, 2}$, $B\brak{5, 2, 4}$ and $C\brak{-1, -1, 6}$. Also find the distance of the point $P\brak{6, 5, 9}$ from the plane.\hfill{(12,2009)} \\
  \solution
- Position vector:
+ The position vectors of the given points are
  \begin{align}
- 	\vec{r}_A = \myvec{3 \\ -1 \\ 2}, \quad \vec{r}_B = \myvec{5 \\ 2 \\ 4}, \quad \vec{r}_C = \myvec{-1 \\ -1 \\ 6}, \quad \vec{r}_P = \myvec{6 \\ 5 \\ 9}
+ 	A = \myvec{3 \\ -1 \\ 2}, \quad B = \myvec{5 \\ 2 \\ 4}, \quad C = \myvec{-1 \\ -1 \\ 6}, \quad P = \myvec{6 \\ 5 \\ 9}
  \end{align}
- Let:
+ Assuming the plane does not pass through the origin, its equation is given by
  \begin{align}
- 	\vec{u} &= \vec{r}_B - \vec{r}_A = \myvec{5 - 3 \\ 2 - \brak{-1} \\ 4 - 2} = \myvec{2 \\ 3 \\ 2}
- 	\label{eq:EE26BTECH11202-u_vec}
- 	\\
- 	\vec{v} &= \vec{r}_C - \vec{r}_A = \myvec{-1 - 3 \\ -1 - \brak{-1} \\ 6 - 2} = \myvec{-4 \\ 0 \\ 4}
- 	\label{eq:EE26BTECH11202-v_vec}
+ 	\vec{n}^{\top}\vec{x} = 1
  \end{align}
- Normal vector $\vec{n} = \vec{u} \times \vec{v}$ orthogonal to the plane,
- From \eqref{eq:cross}
+ Since the plane passes through $A$, $B$ and $C$,
  \begin{align}
- 	\vec{n} &= \myvec{3\brak{4} - 2\brak{0} \\ 2\brak{-4} - 2\brak{4} \\ 2\brak{0} - 3\brak{-4}} = \myvec{12 \\ -8 - 8 \\ 12} = \myvec{12 \\ -16 \\ 12}
+ 	\myvec{A & B & C}^{\top}\vec{n} &= \myvec{1 \\ 1 \\ 1} \\
+ 	\implies \myvec{3 & -1 & 2 \\ 5 & 2 & 4 \\ -1 & -1 & 6}\vec{n} &= \myvec{1 \\ 1 \\ 1}
  \end{align}
- Direction normal vector $\vec{n}_0$:
+ Forming the augmented matrix and performing row operations,
  \begin{align}
- 	\vec{n}_0 = \myvec{3 \\ -4 \\ 3}
- 	\label{eq:EE26BTECH11202-normal_reduced}
+ 	\myvec{3 & -1 & 2 & 1 \\ 5 & 2 & 4 & 1 \\ -1 & -1 & 6 & 1}
+ 	&\xrightarrow[R_1 \to -R_1]{R_1 \to R_3 }
+ 	\myvec{1 & 1 & -6 & -1 \\ 5 & 2 & 4 & 1 \\ 3 & -1 & 2 & 1} \\
+ 	&\xrightarrow[R_3 \to R_3 - 3R_1]{R_2 \to R_2 - 5R_1}
+ 	\myvec{1 & 1 & -6 & -1 \\ 0 & -3 & 34 & 6 \\ 0 & -4 & 20 & 4} \\
+ 	&\xrightarrow{R_3 \to \frac{1}{4}R_3}
+ 	\myvec{1 & 1 & -6 & -1 \\ 0 & -3 & 34 & 6 \\ 0 & -1 & 5 & 1} \\
+ 	&\xrightarrow[R_2 \to -R_2]{R_2 \leftrightarrow R_3}
+ 	\myvec{1 & 1 & -6 & -1 \\ 0 & 1 & -5 & -1 \\ 0 & -3 & 34 & 6} \\
+ 	&\xrightarrow{R_3 \to R_3 + 3R_2}
+ 	\myvec{1 & 1 & -6 & -1 \\ 0 & 1 & -5 & -1 \\ 0 & 0 & 19 & 3} \\
+ 	&\xrightarrow{R_1 \to R_1 - R_2}
+ 	\myvec{1 & 0 & -1 & 0 \\ 0 & 1 & -5 & -1 \\ 0 & 0 & 19 & 3} \\
+ 	&\xrightarrow[R_2 \to 19R_2 + 5R_3]{R_1 \to 19R_1 + R_3 }
+ 	\myvec{19 & 0 & 0 & 3 \\ 0 & 19 & 0 & -4 \\ 0 & 0 & 19 & 3}
  \end{align}
- From \eqref{eq:plane}
+ Thus,
  \begin{align}
- 	\vec{r}_A^T \vec{n}_0 = \myvec{3 & -1 & 2} \myvec{3 \\ -4 \\ 3} = \brak{3}\brak{3} + \brak{-1}\brak{-4} + \brak{2}\brak{3} = 9 + 4 + 6 = 19
+ 	\vec{n} = \frac{1}{19}\myvec{3 \\ -4 \\ 3}
  \end{align}
+ Hence, the equation of the plane is
  \begin{align}
- 	\myvec{x & y & z} \myvec{3 \\ -4 \\ 3} = 19 \implies 3x - 4y + 3z = 19
+ 	\myvec{3 & -4 & 3}\vec{x} = 19
  \end{align}
- Thus, the equation of the plane in Cartesian form is:
- \begin{align}
- 	3x - 4y + 3z - 19 = 0
- \end{align}
- From \eqref{eq:per_dis}
- \begin{align}
- 	\vec{r}_P^T \vec{n}_0 = \myvec{6 & 5 & 9} \myvec{3 \\ -4 \\ 3} = \brak{6}\brak{3} + \brak{5}\brak{-4} + \brak{9}\brak{3} = 18 - 20 + 27 = 25
- \end{align}
- \begin{align}
- 	\norm{\vec{n}_0} = \sqrt{3^2 + \brak{-4}^2 + 3^2} = \sqrt{9 + 16 + 9} = \sqrt{34}
- \end{align}
- \begin{align}
- 	d = \frac{\mydet{25 - 19}}{\sqrt{34}} = \frac{6}{\sqrt{34}} = \frac{3\sqrt{34}}{17}
- \end{align}
+ or in Cartesian form, $3x - 4y + 3z = 19$.
  \begin{figure}[htbp] % [htbp] specifies preferred placement (here, top, bottom, page)
  	\centering
  	\includegraphics[width=0.6\textwidth]{figs/q21}
  	\caption{Graphical Representation}
  	\label{plane_dis}
- \end{figure}  
+ \end{figure}  \newpage 
  \begin{lstlisting}
  	/codes/q21.py
  \end{lstlisting}
